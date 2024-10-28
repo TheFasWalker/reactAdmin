@@ -1,7 +1,8 @@
+import { Navigation } from "../navigation/Navigation";
 
 function App() {
   return (
-<> app</>
+<Navigation/>
 
   );
 }
