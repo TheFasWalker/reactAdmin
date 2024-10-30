@@ -21,18 +21,20 @@ export const Sidebar = () => {
           <li>
             <SidebarLink
               title="Документы"
-              link="/admin/docs" />
+              link="/admin/docs" 
+              icon='pages'/>
           </li>
-          <li>
+           <li>
             <SidebarLink
               title="Компоненты"
-              link="/admin/components" />
+              link="/admin/components"
+              icon='users' />
           </li>
-          <li>
+          {/*<li>
             <SidebarLink
               title="Помощь"
               link="/admin/help" />
-          </li>
+          </li> */}
 
         </ul>
       </div>
