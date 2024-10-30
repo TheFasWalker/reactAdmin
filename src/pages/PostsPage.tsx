@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { PostPreview } from "../components/posts/PostPreview";
 import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
+import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 
 const postaArray = [
     {
@@ -63,7 +64,8 @@ export const PostsPage:FC =()=>{
         <div className="flex justify-between items-center w-full pb-4">
             <div className=""></div>
             <div className=" w-fit">
-                <ButtonType1 name="Добавить пост"/>
+
+                <ButtonLink link={"#"} text="Добавить пост"/>
             </div>
 
         </div>
