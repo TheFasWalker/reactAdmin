@@ -43,6 +43,23 @@ export const UiPage: FC = () => {
                         </div>
                     </div>
                     <div className="w-72">
+                        <ButtonType1
+                            name="имя"
+                        />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">ButtonType1</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>name : string</li>
+                                <li>type : bytton | submit</li>
+                                <li>onclick? : function</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="w-72">
                         <Trash
 
                         />
