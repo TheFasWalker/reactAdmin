@@ -140,31 +140,45 @@ export const UiPage: FC = () => {
                         <div className="">
                             Параметры:
                             <ul>
-                                <li>id : users| pages | info |help</li>
+                                <li>id : users| pages | info | help | lessons | contacts | home</li>
                             </ul>
                         </div>
                         <div className="flex gap-4 flex-wrap mt-5">
-                            <div className="flex flex-col ">
+                            <div className="flex flex-col items-center">
                                 <Icons
                                     id="users" />
                                 <span>users</span>
                             </div>
-                            <div className="flex flex-col ">
+                            <div className="flex flex-col items-center">
                                 <Icons
                                     id="info" />
                                     <span>info</span>
                                     </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col items-center">
                                     <Icons
                                         id="help" />
                                         <span>help</span>
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col items-center">
                                     <Icons
                                         id="pages" />
                                         <span>pages</span>
                                 </div>
-
+                                <div className="flex flex-col items-center">
+                                    <Icons
+                                        id="lessons" />
+                                        <span>lessons</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Icons
+                                        id="home" />
+                                        <span>home</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Icons
+                                        id="contacts" />
+                                        <span>contacts</span>
+                                </div>
 
                             </div>
                         </div>

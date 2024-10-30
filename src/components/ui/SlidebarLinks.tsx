@@ -4,7 +4,7 @@ import { Icons } from "./Icons";
 interface sidebarProps {
     title: string,
     link: string,
-    icon: 'users'| 'pages' | 'info' |'help'
+    icon: 'users'| 'pages' | 'info' |'help' | 'lessons' |'contacts'|'home'
 }
 export const SidebarLink: FC<sidebarProps> = ({ title, link, icon }) => {
     return (

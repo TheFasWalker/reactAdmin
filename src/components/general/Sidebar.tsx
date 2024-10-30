@@ -12,10 +12,10 @@ export const Sidebar = () => {
 
         <ul className="space-y-2">
           <li>
-            <SidebarLink title={"Главная"} link={"/admin"} icon={"pages"} />
+            <SidebarLink title={"Главная"} link={"/admin"} icon={"home"} />
           </li>
           <li>
-            <SidebarLink title={"Уроки"} link={"lessons"} icon={"pages"} />
+            <SidebarLink title={"Уроки"} link={"lessons"} icon={"lessons"} />
           </li>
           <li>
             <SidebarLink
@@ -27,7 +27,7 @@ export const Sidebar = () => {
           </li>          
           <li>
             <SidebarLink
-              title="Контакты" link={"contacts"} icon={"users"}            />
+              title="Контакты" link={"contacts"} icon={"contacts"}            />
           </li>
         </ul>
         <ul
