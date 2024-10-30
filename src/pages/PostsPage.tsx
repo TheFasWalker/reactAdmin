@@ -65,7 +65,7 @@ export const PostsPage:FC =()=>{
             <div className=""></div>
             <div className=" w-fit">
 
-                <ButtonLink link={"#"} text="Добавить пост"/>
+                <ButtonLink link={"create"} text="Добавить пост"/>
             </div>
 
         </div>

@@ -11,6 +11,7 @@ import { PostsPage } from "../pages/PostsPage"
 import { LessonsPage } from "../pages/LessonsPage"
 import { UsersPage } from "../pages/UsersPage"
 import { ContactsPage } from "../pages/ContactsPage"
+import { CreatePost } from "../pages/Posts/CreatePost"
 
 export const Navigation:FC =()=>{
     return(
@@ -24,6 +25,7 @@ export const Navigation:FC =()=>{
                     <Route path="docs" element={<DocsPage/>}/>
                     <Route path="help" element={<HelpPage/>}/>
                     <Route path="posts" element={<PostsPage/>}/>
+                    <Route path="posts/create" element={<CreatePost/>}/>
                     <Route path="lessons" element={<LessonsPage/>}/>
                     <Route path="users" element={<UsersPage/>}/>
                     <Route path="contacts" element={<ContactsPage/>}/>
