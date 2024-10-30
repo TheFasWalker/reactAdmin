@@ -32,7 +32,7 @@ const postaArray = [
         description: "Кошки могут быть очень привязанными к своим хозяевам. Некоторые из них следуют за людьми по дому, а другие любят сидеть на коленях во время отдыха. Эта привязанность создает особую связь между кошкой и ее владельцем."
     },
     {
-        img: "https://placekitten.com/407/300",
+        img: "",
         description: "Каждая кошка имеет свои предпочтения в еде и играх. Некоторые любят играть с мячами или перышками, а другие предпочитают более спокойные занятия, такие как лежание на солнце или наблюдение за птицами за окном."
     },
     {
@@ -60,7 +60,13 @@ export const PostsPage:FC =()=>{
 
     return <>
     <div className="">
+        <div className="flex justify-between items-center w-full pb-4">
+            <div className=""></div>
+            <div className=" w-fit">
+                <ButtonType1 name="Добавить пост"/>
+            </div>
 
+        </div>
         <div className="grid grid-cols-4 gap-5">
             {postaArray.map(post=>(
                 <PostPreview
