@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 
 import { validateField } from "../heplers/formValidation";
 import { NavLink } from "react-router-dom";
+import { InputField } from "../components/ui/form/InputField";
 
 export const LoginPage: FC = () => {
     return (
@@ -22,42 +23,25 @@ export const LoginPage: FC = () => {
                                 password: ""
                             }}
                             onSubmit={(values) => console.log('asdfaa')}
-                            >
+                        >
                             {({ errors, touched }) => (
                                 <Form className=" flex flex-col gap-4">
-                                    <label>
-                                        <span>email</span>
-                                        <Field
-                                            type='email'
-                                            name='email'
-                                            placeholder='Почта Слэма'
-                                            className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${errors.email && touched.email && "bg-red-200 border-red-500"
-                                                }`}
-                                            validate={validateField} />
-                                        <div className="mt-2 text-sm text-red-600 dark:text-red-500">
-                                            {errors.email}
-                                        </div>
-                                        {errors.email && touched.email && (
-                                            <div className="mt-2 text-sm text-red-600 dark:text-red-500">
-                                                {errors.email}
-                                            </div>
-                                        )}
-                                    </label>
-                                    <label>
-                                        <span>Пароль</span>
-                                        <Field
-                                            type='password'
-                                            name='password'
-                                            placeholder='Пароль Слэма'
-                                            className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${errors.password && touched.password && "bg-red-200 border-red-500"
-                                                }`}
-                                            validate={validateField} />
-                                        {errors.password && touched.password && (
-                                            <div className="mt-2 text-sm text-red-600 dark:text-red-500">
-                                                {errors.password}
-                                            </div>
-                                        )}
-                                    </label>
+                                    <InputField
+                                        title='email'
+                                        name="email"
+                                        type='email'
+                                        placeholder='Почта Слэма'
+                                        validateFunc={() => validateField}
+                                        error={errors.email}
+                                        touched={touched.email} />
+                                    <InputField
+                                        title='password'
+                                        name="password"
+                                        type='password'
+                                        placeholder='Пароль Слэма'
+                                        validateFunc={() => validateField}
+                                        error={errors.password}
+                                        touched={touched.password} />
                                     <ButtonType1
                                         type="submit"
                                         name="Молви Слэм и войди!" />
