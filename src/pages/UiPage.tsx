@@ -4,6 +4,7 @@ import { Trash } from "../components/ui/buttons/Trash";
 import { Edit } from "../components/ui/buttons/Edit";
 import { Loader } from "../components/general/Loader";
 import { PopUpWrapper } from "../components/general/PopUpWrapper";
+import { Icons } from "../components/ui/Icons";
 
 export const UiPage: FC = () => {
     const [loaderState, setLoaderState] = useState(false)
@@ -125,6 +126,51 @@ export const UiPage: FC = () => {
 
                 </div>
             </div>
+            <div className="">
+                <h2 className="text-center ">Иконки</h2>
+                <div className="flex gap-7">
+
+                    <div className="w-72">
+                        <Icons
+                            id="users" />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">Icons</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>id : users| pages | info |help</li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-4 flex-wrap mt-5">
+                            <div className="flex flex-col ">
+                                <Icons
+                                    id="users" />
+                                <span>users</span>
+                            </div>
+                            <div className="flex flex-col ">
+                                <Icons
+                                    id="info" />
+                                    <span>info</span>
+                                    </div>
+                                <div className="flex flex-col ">
+                                    <Icons
+                                        id="help" />
+                                        <span>help</span>
+                                </div>
+                                <div className="flex flex-col ">
+                                    <Icons
+                                        id="pages" />
+                                        <span>pages</span>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
 
 
@@ -132,6 +178,6 @@ export const UiPage: FC = () => {
 
 
 
-        </>
-    )
+            </>
+            )
 }

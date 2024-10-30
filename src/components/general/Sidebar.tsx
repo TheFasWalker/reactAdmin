@@ -28,7 +28,7 @@ export const Sidebar = () => {
             <SidebarLink
               title="Компоненты"
               link="/admin/components"
-              icon='users' />
+              icon='help' />
           </li>
           {/*<li>
             <SidebarLink

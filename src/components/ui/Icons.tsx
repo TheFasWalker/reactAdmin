@@ -1,7 +1,7 @@
 import { FC } from "react";
 import iconsSVG from '../../assets/sprite.svg'
 interface iconInterface{
-    id:string
+    id:'users'| 'pages' | 'info' |'help'
 }
 export const Icons:FC<iconInterface>=({id})=>{
     return(
