@@ -12,39 +12,51 @@ export const UiPage: FC = () => {
                 <div className="flex gap-7">
                     <div className="w-72">
                         <ButtonType1
-                        name="имя"
+                            name="имя"
                         />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">ButtonType1</span>
+                        </div>
                         <div className="">
-                        Параметры:
-                        <ul>
-                            <li>type : bytton | submit</li>
-                            <li>onclick? : function</li>
+                            Параметры:
+                            <ul>
+                                <li>type : bytton | submit</li>
+                                <li>onclick? : function</li>
 
-                        </ul>
+                            </ul>
                         </div>
                     </div>
                     <div className="w-72">
                         <Trash
-                        
+
                         />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">Edit</span>
+                        </div>
                         <div className="">
-                        Параметры:
-                        <ul>
-                            <li>onclick? : function</li>
-                        </ul>
-                        при клике появляется попап для подтверждения действия
+                            Параметры:
+                            <ul>
+                                <li>onclick? : function</li>
+                            </ul>
+                            при клике появляется попап для подтверждения действия
                         </div>
                     </div>
                     <div className="w-72">
                         <Edit
-                        
+
                         />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">Edit</span>
+                        </div>
                         <div className="">
-                        Параметры:
-                        <ul>
-                            <li>onclick? : function</li>
-                        </ul>
-                        кнопка для редактирования
+                            Параметры:
+                            <ul>
+                                <li>onclick? : function</li>
+                            </ul>
+                            кнопка для редактирования
                         </div>
                     </div>
                 </div>
