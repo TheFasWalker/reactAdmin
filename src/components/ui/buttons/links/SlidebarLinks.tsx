@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import { Icons } from "./Icons";
+import { Icons } from "../../other/Icons";
 interface sidebarProps {
     title: string,
     link: string,

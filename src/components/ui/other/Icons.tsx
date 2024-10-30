@@ -1,5 +1,5 @@
 import { FC } from "react";
-import iconsSVG from '../../assets/sprite.svg'
+import iconsSVG from '../../../assets/sprite.svg'
 interface iconInterface{
     id:string
 }

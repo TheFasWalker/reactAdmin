@@ -4,7 +4,8 @@ import { Trash } from "../components/ui/buttons/Trash";
 import { Edit } from "../components/ui/buttons/Edit";
 import { Loader } from "../components/general/Loader";
 import { PopUpWrapper } from "../components/general/PopUpWrapper";
-import { Icons } from "../components/ui/Icons";
+import { Icons } from "../components/ui/other/Icons";
+
 
 export const UiPage: FC = () => {
     const [loaderState, setLoaderState] = useState(false)

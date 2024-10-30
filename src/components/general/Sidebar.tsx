@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
-import { SidebarLink } from "../ui/SlidebarLinks"
+import { SidebarLink } from "../ui/buttons/links/SlidebarLinks"
+
 
 export const Sidebar = () => {
   return (
