@@ -3,15 +3,16 @@ import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { Trash } from "../components/ui/buttons/Trash";
 import { Edit } from "../components/ui/buttons/Edit";
 import { Loader } from "../components/general/Loader";
+import { PopUpWrapper } from "../components/general/PopUpWrapper";
 
 export const UiPage: FC = () => {
-    const [loaderState, setLoaderState]=useState(false)
-
-    const showLoader=()=>{
+    const [loaderState, setLoaderState] = useState(false)
+    const [popupState, setPopupState] = useState(false)
+    const showLoader = () => {
         setLoaderState(true)
-        setTimeout(()=>{
+        setTimeout(() => {
             setLoaderState(false)
-        },3000)
+        }, 3000)
 
     }
     return (
@@ -76,14 +77,14 @@ export const UiPage: FC = () => {
                 <h2 className="text-center ">Обёртки</h2>
                 <div className="flex gap-7">
                     <div className="w-72">
-                    <Loader
-                            loadingState={loaderState}/>
+                        <Loader
+                            loadingState={loaderState} />
                         <ButtonType1
                             name="вызов Лоадера"
                             onClick={showLoader}
                         />
 
-                           
+
                         <div className="flex flex-row gap-2">
                             <span className="font-bold">имя компонента:</span>
                             <span className="font-bold text-green-900">Loader</span>
@@ -92,6 +93,32 @@ export const UiPage: FC = () => {
                             Параметры:
                             <ul>
                                 <li>loadingState : boolean</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="w-72">
+                        <PopUpWrapper
+                            state={popupState}
+                            close={() => setPopupState(false)}>
+                            Наполнение для попапа
+
+                        </PopUpWrapper>
+                        <ButtonType1
+                            name="вызов попапа"
+                            onClick={() => setPopupState(true)}
+                        />
+
+
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">PopUpWrapper</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>state:boolean</li>
+                                <li>close:function</li>
+                                <li>children:React.ReactNode</li>
                             </ul>
                         </div>
                     </div>
