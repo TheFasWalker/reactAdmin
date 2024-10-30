@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { Trash } from "../components/ui/buttons/Trash";
+import { Edit } from "../components/ui/buttons/Edit";
 
 export const UiPage: FC = () => {
     return (
@@ -32,6 +33,18 @@ export const UiPage: FC = () => {
                             <li>onclick? : function</li>
                         </ul>
                         при клике появляется попап для подтверждения действия
+                        </div>
+                    </div>
+                    <div className="w-72">
+                        <Edit
+                        
+                        />
+                        <div className="">
+                        Параметры:
+                        <ul>
+                            <li>onclick? : function</li>
+                        </ul>
+                        кнопка для редактирования
                         </div>
                     </div>
                 </div>
