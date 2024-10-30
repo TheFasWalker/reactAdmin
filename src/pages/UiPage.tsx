@@ -5,6 +5,8 @@ import { Edit } from "../components/ui/buttons/Edit";
 import { Loader } from "../components/general/Loader";
 import { PopUpWrapper } from "../components/general/PopUpWrapper";
 import { Icons } from "../components/ui/other/Icons";
+import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
+import { SidebarLink } from "../components/ui/buttons/links/SlidebarLinks";
 
 
 export const UiPage: FC = () => {
@@ -74,6 +76,52 @@ export const UiPage: FC = () => {
                     </div>
                 </div>
             </div>
+            <div className="">
+                <h2 className="text-center ">Кнопки</h2>
+                <div className="flex gap-7">
+                    <div className="w-72">
+                        <div className=" h-11">
+                        <ButtonLink 
+                        link={"#"} 
+                        text={"Текст ссылки"}                        />
+                        </div>
+
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">ButtonLink</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>link : string</li>
+                                <li>text : string</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="w-72">
+                        <div className=" h-11">
+                            <SidebarLink 
+                            title={"Текст ссылки"} 
+                            link={"#"} 
+                            icon={"users"}/>
+                        </div>
+
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">ButtonLink</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>title : string</li>
+                                <li>link : string</li>
+                                <li>icon : string   (см. список иконок)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
             <div className="">
                 <h2 className="text-center ">Обёртки</h2>
@@ -141,7 +189,7 @@ export const UiPage: FC = () => {
                         <div className="">
                             Параметры:
                             <ul>
-                                <li>id : users| pages | info | help | lessons | contacts | home</li>
+                                <li>id : users| pages | info | help | lessons | contacts | home | exit</li>
                             </ul>
                         </div>
                         <div className="flex gap-4 flex-wrap mt-5">
@@ -180,7 +228,11 @@ export const UiPage: FC = () => {
                                         id="contacts" />
                                         <span>contacts</span>
                                 </div>
-
+                                <div className="flex flex-col items-center">
+                                    <Icons
+                                        id="exit" />
+                                        <span>exit</span>
+                                </div>
                             </div>
                         </div>
 
