@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { ButtonType1 } from "./SybmitButton";
 interface ButtonProps {
     onclick?: () => void
@@ -6,13 +6,29 @@ interface ButtonProps {
 
 
 export const Trash: FC<ButtonProps> = () => {
-    const [deletePopupState, setDeletePopupState] = useState(true)
+    const [deletePopupState, setDeletePopupState] = useState(false)
+    const popupRef = useRef<HTMLDivElement>(null)
     const closePopup=()=>{
         setDeletePopupState(false)
     }
     const openConfirmPopup =()=>{
         setDeletePopupState(true)
     }
+    const missclick = (event: MouseEvent) => {
+        if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+            closePopup();
+        }
+    };
+    useEffect(() => {
+        if (deletePopupState) {
+            document.addEventListener("mousedown", missclick);
+        } else {
+            document.removeEventListener("mousedown", missclick);
+        }
+        return () => {
+            document.removeEventListener("mousedown", missclick);
+        };
+    }, [deletePopupState]);
     return (
         <>
 
@@ -24,7 +40,7 @@ export const Trash: FC<ButtonProps> = () => {
 
             {deletePopupState && (
                 <div className=" fixed top-0 left-0 bottom-0 right-0 w-full h-full flex items-center justify-center bg-[#00000080]">
-                    <div className="bg-white rounded-md p-4 flex flex-col gap-3">
+                    <div className="bg-white rounded-md p-4 flex flex-col gap-3" ref={popupRef}>
                         <h2>Вы точно хотите это сделать?</h2>
                         <div className="flex flex-row gap-2">
                             <ButtonType1
