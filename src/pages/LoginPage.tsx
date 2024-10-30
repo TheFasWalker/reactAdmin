@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ButtonType1 } from "../components/ui/SybmitButton";
+import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { Field, Form, Formik } from "formik";
 
 import { validateField } from "../heplers/formValidation";
