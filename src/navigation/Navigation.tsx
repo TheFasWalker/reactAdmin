@@ -7,6 +7,10 @@ import { UiPage } from "../pages/UiPage"
 import { DocsPage } from "../pages/DocsPage"
 import { HelpPage } from "../pages/HelpPage"
 import { ErrorPage } from "../pages/ErrorPage"
+import { PostsPage } from "../pages/PostsPage"
+import { LessonsPage } from "../pages/LessonsPage"
+import { UsersPage } from "../pages/UsersPage"
+import { ContactsPage } from "../pages/ContactsPage"
 
 export const Navigation:FC =()=>{
     return(
@@ -19,7 +23,10 @@ export const Navigation:FC =()=>{
                     <Route path="components" element ={<UiPage/>}/>
                     <Route path="docs" element={<DocsPage/>}/>
                     <Route path="help" element={<HelpPage/>}/>
-                    
+                    <Route path="posts" element={<PostsPage/>}/>
+                    <Route path="lessons" element={<LessonsPage/>}/>
+                    <Route path="users" element={<UsersPage/>}/>
+                    <Route path="contacts" element={<ContactsPage/>}/>
                 </Route>
                 <Route path="/*" element={<ErrorPage/>}/>
             </Routes>

@@ -12,7 +12,22 @@ export const Sidebar = () => {
 
         <ul className="space-y-2">
           <li>
-          Дропдауны будут тут
+            <SidebarLink title={"Главная"} link={"/admin"} icon={"pages"} />
+          </li>
+          <li>
+            <SidebarLink title={"Уроки"} link={"lessons"} icon={"pages"} />
+          </li>
+          <li>
+            <SidebarLink
+              title="посты" link={"posts"} icon={"pages"}            />
+          </li>
+          <li>
+            <SidebarLink
+              title="Пользователи" link={"users"} icon={"users"}            />
+          </li>          
+          <li>
+            <SidebarLink
+              title="Контакты" link={"contacts"} icon={"users"}            />
           </li>
         </ul>
         <ul
@@ -30,11 +45,7 @@ export const Sidebar = () => {
               link="/admin/components"
               icon='help' />
           </li>
-          {/*<li>
-            <SidebarLink
-              title="Помощь"
-              link="/admin/help" />
-          </li> */}
+
 
         </ul>
       </div>
