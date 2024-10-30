@@ -7,6 +7,7 @@ import { PopUpWrapper } from "../components/general/PopUpWrapper";
 import { Icons } from "../components/ui/other/Icons";
 import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 import { SidebarLink } from "../components/ui/buttons/links/SlidebarLinks";
+import { WhiteButton } from "../components/ui/buttons/WhiteButton";
 
 
 export const UiPage: FC = () => {
@@ -43,19 +44,22 @@ export const UiPage: FC = () => {
                         </div>
                     </div>
                     <div className="w-72">
-                        <ButtonType1
-                            name="имя"
+                        <WhiteButton 
+                            title="Текст кнопки"
+                            icon='exit'
                         />
                         <div className="flex flex-row gap-2">
                             <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">ButtonType1</span>
+                            <span className="font-bold text-green-900">WhiteButton</span>
                         </div>
                         <div className="">
                             Параметры:
                             <ul>
-                                <li>name : string</li>
+                                <li> title : string</li>
                                 <li>type : bytton | submit</li>
                                 <li>onclick? : function</li>
+                                <li>type?: button | submit</li>
+                                <li> icon?:string (см список иконок)</li>
                             </ul>
                         </div>
                     </div>
