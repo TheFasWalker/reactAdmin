@@ -131,7 +131,7 @@ export const UiPage: FC = () => {
 
                         <div className="flex flex-row gap-2">
                             <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">ButtonLink</span>
+                            <span className="font-bold text-green-900">SidebarLink</span>
                         </div>
                         <div className="">
                             Параметры:
