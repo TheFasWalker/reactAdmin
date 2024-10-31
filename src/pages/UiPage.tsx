@@ -8,6 +8,8 @@ import { Icons } from "../components/ui/other/Icons";
 import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 import { SidebarLink } from "../components/ui/buttons/links/SlidebarLinks";
 import { WhiteButton } from "../components/ui/buttons/WhiteButton";
+import { InputField } from "../components/ui/form/InputField";
+import { Form, Formik } from "formik";
 
 
 export const UiPage: FC = () => {
@@ -44,7 +46,7 @@ export const UiPage: FC = () => {
                         </div>
                     </div>
                     <div className="w-72">
-                        <WhiteButton 
+                        <WhiteButton
                             title="Текст кнопки"
                             icon='exit'
                         />
@@ -102,9 +104,9 @@ export const UiPage: FC = () => {
                 <div className="flex gap-7">
                     <div className="w-72">
                         <div className=" h-11">
-                        <ButtonLink 
-                        link={"#"} 
-                        text={"Текст ссылки"}                        />
+                            <ButtonLink
+                                link={"#"}
+                                text={"Текст ссылки"} />
                         </div>
 
                         <div className="flex flex-row gap-2">
@@ -121,10 +123,10 @@ export const UiPage: FC = () => {
                     </div>
                     <div className="w-72">
                         <div className=" h-11">
-                            <SidebarLink 
-                            title={"Текст ссылки"} 
-                            link={"#"} 
-                            icon={"users"}/>
+                            <SidebarLink
+                                title={"Текст ссылки"}
+                                link={"#"}
+                                icon={"users"} />
                         </div>
 
                         <div className="flex flex-row gap-2">
@@ -222,50 +224,95 @@ export const UiPage: FC = () => {
                             <div className="flex flex-col items-center">
                                 <Icons
                                     id="info" />
-                                    <span>info</span>
-                                    </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="help" />
-                                        <span>help</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="pages" />
-                                        <span>pages</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="lessons" />
-                                        <span>lessons</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="home" />
-                                        <span>home</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="contacts" />
-                                        <span>contacts</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Icons
-                                        id="exit" />
-                                        <span>exit</span>
-                                </div>
+                                <span>info</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="help" />
+                                <span>help</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="pages" />
+                                <span>pages</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="lessons" />
+                                <span>lessons</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="home" />
+                                <span>home</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="contacts" />
+                                <span>contacts</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <Icons
+                                    id="exit" />
+                                <span>exit</span>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
+            </div>
+            
+            <div className="">
+            <h2>Поля для formik</h2>
+
+            <Formik initialValues={{
+                email: "",
+                password: ""
+            }}
+                onSubmit={(values) => console.log('asdfaa')}
+            >
+                {({ errors, touched }) => (
+                     <Form className=" flex flex-col gap-4">
+
+                        <div className="w-72">
+                    <InputField
+                        validateFunc={function (): void {
+                            throw new Error("Function not implemented.");
+                        }}
+                        error={errors.email}
+                        touched={touched.email}
+                        type="email"
+                        name={"testField"}
+                        placeholder="Placeholder"
+                        title={"Заголовок"} />
+                       <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">InputField</span>
+                        </div>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>error: вставляются ошибки от формика</li>
+                                <li>touched:вставляется состояние от формика</li>
+                                <li>type:text | email</li>
+                                <li>name:string</li>
+                                <li>placeholder:string</li>
+                                <li>title:Заголовок</li>
+                            </ul>
+                        </div>
+
+
+                                            </div>
+                            </Form>
+
+                    )}
 
 
 
 
+</Formik>
+            </div>
 
-
-
-            </>
-            )
+        </>
+    )
 }
