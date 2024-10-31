@@ -12,6 +12,8 @@ import { InputField } from "../components/ui/form/InputField";
 import { Form, Formik } from "formik";
 import { DropDownSection } from "../components/uiPage/DropDownSection";
 import { BackButton } from "../components/ui/buttons/BackButton";
+import { PhotoInput } from "../components/ui/form/PhotoInput";
+
 
 
 export const UiPage: FC = () => {
@@ -27,6 +29,9 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
+            <PhotoInput
+                name="fileinput"/>
+
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
@@ -273,7 +278,7 @@ export const UiPage: FC = () => {
                     onSubmit={(values) => console.log('asdfaa')}
                 >
                     {({ errors, touched }) => (
-                        <Form className=" flex flex-col gap-4">
+                        <Form className=" flex flex-row gap-4">
 
                             <div className="w-72">
                                 <InputField
@@ -286,6 +291,26 @@ export const UiPage: FC = () => {
                                     name={"testField"}
                                     placeholder="Placeholder"
                                     title={"Заголовок"} />
+                                <div className="flex flex-row gap-2">
+                                    <span className="font-bold">имя компонента:</span>
+                                    <span className="font-bold text-green-900">InputField</span>
+                                </div>
+                                <div className="">
+                                    Параметры:
+                                    <ul>
+                                        <li>error: вставляются ошибки от формика</li>
+                                        <li>touched:вставляется состояние от формика</li>
+                                        <li>type:text | email</li>
+                                        <li>name:string</li>
+                                        <li>placeholder:string</li>
+                                        <li>title:Заголовок</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            <div className="w-72">
+
                                 <div className="flex flex-row gap-2">
                                     <span className="font-bold">имя компонента:</span>
                                     <span className="font-bold text-green-900">InputField</span>
