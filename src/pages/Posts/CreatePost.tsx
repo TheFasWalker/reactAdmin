@@ -3,9 +3,14 @@ import { CreateEditHeader } from "../../components/general/CreateEditHeader";
 import { Editor } from '@tinymce/tinymce-react';
 
 export const CreatePost:FC=()=>{
+    interface TinyMCEEditorInterface {
+        getContent(): string; 
+        setContent(content: string): void; 
+       
+      }
     const [content, setContent] = useState('');
 
-    const handleEditorChange = (content, editor) => {
+    const handleEditorChange = (content:string, editor: TinyMCEEditorInterface) => {
         setContent(content);
     };
     return(
@@ -26,6 +31,7 @@ export const CreatePost:FC=()=>{
 
                 }}
                 onEditorChange={handleEditorChange}
+
             />
         </div>
     )
