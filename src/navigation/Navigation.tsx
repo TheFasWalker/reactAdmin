@@ -13,6 +13,7 @@ import { UsersPage } from "../pages/UsersPage"
 import { ContactsPage } from "../pages/ContactsPage"
 import { CreatePost } from "../pages/Posts/CreatePost"
 import { ShowPost } from "../pages/Posts/ShowPost"
+import { Error505 } from "../pages/505error"
 
 export const Navigation:FC =()=>{
     return(
@@ -33,6 +34,7 @@ export const Navigation:FC =()=>{
                     <Route path="contacts" element={<ContactsPage/>}/>
                 </Route>
                 <Route path="/*" element={<ErrorPage/>}/>
+                <Route path="/error-505" element={<Error505/>}/>
             </Routes>
         </BrowserRouter>
     )
