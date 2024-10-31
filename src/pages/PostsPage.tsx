@@ -84,6 +84,7 @@ export const PostsPage:FC =()=>{
         <div className="grid grid-cols-4 gap-5">
             {postaArray.map(post=>(
                 <PostPreview
+                postId={post.id}
                 key={post.id}
                 img={post.img}
                 description={post.description}
