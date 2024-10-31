@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 
-export const ErrorPage:FC =()=>{
+export const Error404:FC =()=>{
     return(
         <section className="bg-white dark:bg-gray-900">
     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

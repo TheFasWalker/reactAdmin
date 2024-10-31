@@ -6,14 +6,14 @@ import { HomePage } from "../pages/HomePage"
 import { UiPage } from "../pages/UiPage"
 import { DocsPage } from "../pages/DocsPage"
 import { HelpPage } from "../pages/HelpPage"
-import { ErrorPage } from "../pages/ErrorPage"
+import { Error404 } from "../pages/Error404"
 import { PostsPage } from "../pages/PostsPage"
 import { LessonsPage } from "../pages/LessonsPage"
 import { UsersPage } from "../pages/UsersPage"
 import { ContactsPage } from "../pages/ContactsPage"
 import { CreatePost } from "../pages/Posts/CreatePost"
 import { ShowPost } from "../pages/Posts/ShowPost"
-import { Error505 } from "../pages/505error"
+import { Error505 } from "../pages/Error505"
 
 export const Navigation:FC =()=>{
     return(
@@ -33,7 +33,7 @@ export const Navigation:FC =()=>{
                     <Route path="users" element={<UsersPage/>}/>
                     <Route path="contacts" element={<ContactsPage/>}/>
                 </Route>
-                <Route path="/*" element={<ErrorPage/>}/>
+                <Route path="/*" element={<Error404/>}/>
                 <Route path="/error-505" element={<Error505/>}/>
             </Routes>
         </BrowserRouter>
