@@ -3,6 +3,9 @@ import { CreateEditHeader } from "../../components/general/CreateEditHeader";
 import { useParams } from "react-router-dom";
 import { Trash } from "../../components/ui/buttons/Trash";
 import { Edit } from "../../components/ui/buttons/Edit";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
 
 const postData =
 {
@@ -14,7 +17,6 @@ const postData =
         'https://masterpiecer-images.s3.yandex.net/5f99831035d01c8:upscaled',
         'https://news.store.rambler.ru/img/865952f77b214170ac4054cf276d9256?img-1-resize=width%3A1280%2Cheight%3A960%2Cfit%3Acover&img-format=auto',
         'https://avatars.dzeninfra.ru/get-zen_doc/50840/pub_5d6741b18600e100ad3fca54_5d67433a028d6800ad0a2dc2/scale_1200',
-        ''
     ]
 }
 
@@ -28,7 +30,16 @@ export const ShowPost: FC = () => {
             <span>ItemId: {id}</span>
             <div className="grid grid-cols-[500px_1fr]">
                 <div className="w-full h-500">
-                    <img src={postData.images[0]} alt="" />
+                    <Swiper
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    loop={true}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}>
+                        {postData.images.map(image=>(
+                            <SwiperSlide><img src={image} alt="" /></SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
                 <div className=" px-3">{postData.description}</div>
             </div>
