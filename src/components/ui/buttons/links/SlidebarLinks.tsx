@@ -8,7 +8,9 @@ interface sidebarProps {
 }
 export const SidebarLink: FC<sidebarProps> = ({ title, link, icon }) => {
     return (
-        <NavLink className='flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group'
+        <NavLink 
+        className={({isActive,isPending })=>
+            isPending ? 'isPending' : isActive ? 'flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 bg-gray-100' : 'flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100'}
             to={link}>
 
             <Icons
@@ -16,6 +18,7 @@ export const SidebarLink: FC<sidebarProps> = ({ title, link, icon }) => {
             <span className="ml-3"> {title}</span>
 
         </NavLink>
+        // flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100
     )
 }
 
