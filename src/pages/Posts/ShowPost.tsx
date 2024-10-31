@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { CreateEditHeader } from "../../components/general/CreateEditHeader";
 import { useParams } from "react-router-dom";
 import { Trash } from "../../components/ui/buttons/Trash";
@@ -6,6 +6,8 @@ import { Edit } from "../../components/ui/buttons/Edit";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/swiper-bundle.css'
+import noImage from '../../assets/noimage.png'
 
 const postData =
 {
@@ -23,24 +25,72 @@ const postData =
 
 export const ShowPost: FC = () => {
     const { id } = useParams();
+    const swiperRef = useRef<any>(null); // Create a ref for the Swiper instance
+    const [activeIndex, setActiveIndex] = useState(0); // State to track the active slide
+
+    const handleSlideChange = (swiper: any) => {
+        setActiveIndex(swiper.activeIndex); // Update active index on slide change
+    };
+
+    useEffect(() => {
+        if (swiperRef.current) {
+            swiperRef.current.swiper.on('slideChange', handleSlideChange);
+        }
+    }, []);
     return (
         <div className=" relative">
             <CreateEditHeader
                 title='Просмотр поста' />
             <span>ItemId: {id}</span>
             <div className="grid grid-cols-[500px_1fr]">
-                <div className="w-full h-500">
-                    <Swiper
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    loop={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}>
-                        {postData.images.map(image=>(
-                            <SwiperSlide><img src={image} alt="" /></SwiperSlide>
+                {postData.images.length >= 3 && (
+                    <div className="w-full h-[500px]">
+
+                        <Swiper
+                            ref={swiperRef}
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            onSlideChange={() => console.log('slide change')}
+                            onSwiper={(swiper) => console.log(swiper)}
+                            pagination={{ clickable: true }}>
+                            {postData.images.map(image => (
+                                <SwiperSlide>
+                                    <div className="w-full h-full flex justify-center items-center">
+                                    <img className="" src={image} alt="" />
+                                    </div>
+                                    </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <div className=" flex gap-3 items-center">
+                            {postData.images.map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={`h-3 w-3   rounded-full ${activeIndex === index ? 'bg-blue-700' : 'bg-blue-300 hover:bg-blue-500'}`}
+                                    onClick={() => swiperRef.current.swiper.slideTo(index)}
+                                />
+                            ))}
+                        </div>
+
+   
+                    </div>
+                )}
+                {postData.images.length < 3 && postData.images.length != 0 && (
+                    <div className="w-full flex flex-col gap-2">
+                        {postData.images.map(image => (
+                            <img src={image} alt="" />
                         ))}
-                    </Swiper>
-                </div>
+
+                    </div>
+                )}
+                {
+                    postData.images.length == 0 && (
+                        <div className="w-full flex items-center justify-center">
+                            <img src={noImage} alt="" />
+                        </div>
+
+                    )
+
+                }
                 <div className=" px-3">{postData.description}</div>
             </div>
             <div className=" flex gap-3 absolute top-3 right-3">
@@ -50,3 +100,6 @@ export const ShowPost: FC = () => {
         </div>
     )
 }
+<style>
+
+</style>
