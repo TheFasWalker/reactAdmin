@@ -10,6 +10,7 @@ import { SidebarLink } from "../components/ui/buttons/links/SlidebarLinks";
 import { WhiteButton } from "../components/ui/buttons/WhiteButton";
 import { InputField } from "../components/ui/form/InputField";
 import { Form, Formik } from "formik";
+import { DropDownSection } from "../components/uiPage/DropDownSection";
 
 
 export const UiPage: FC = () => {
@@ -25,293 +26,277 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
-            <div className="">
-                <h2 className="text-center ">Кнопки</h2>
-                <div className="flex gap-7">
-                    <div className="w-72">
-                        <ButtonType1
-                            name="имя"
-                        />
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">ButtonType1</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>name : string</li>
-                                <li>type : bytton | submit</li>
-                                <li>onclick? : function</li>
-                            </ul>
-                        </div>
+            <DropDownSection title="Кнопки">
+                <div className="w-72">
+                    <ButtonType1
+                        name="имя"
+                    />
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">ButtonType1</span>
                     </div>
-                    <div className="w-72">
-                        <WhiteButton
-                            title="Текст кнопки"
-                            icon='exit'
-                        />
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">WhiteButton</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li> title : string</li>
-                                <li>type : bytton | submit</li>
-                                <li>onclick? : function</li>
-                                <li>type?: button | submit</li>
-                                <li> icon?:string (см список иконок)</li>
-                            </ul>
-                        </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>name : string</li>
+                            <li>type : bytton | submit</li>
+                            <li>onclick? : function</li>
+                        </ul>
                     </div>
-                    <div className="w-72">
-                        <Trash
+                </div>
+                <div className="w-72">
+                    <WhiteButton
+                        title="Текст кнопки"
+                        icon='exit'
+                    />
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">WhiteButton</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li> title : string</li>
+                            <li>type : bytton | submit</li>
+                            <li>onclick? : function</li>
+                            <li>type?: button | submit</li>
+                            <li> icon?:string (см список иконок)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="w-72">
+                    <Trash
 
-                        />
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">Edit</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>onclick? : function</li>
-                            </ul>
-                            при клике появляется попап для подтверждения действия
-                        </div>
+                    />
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">Edit</span>
                     </div>
-                    <div className="w-72">
-                        <Edit
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>onclick? : function</li>
+                        </ul>
+                        при клике появляется попап для подтверждения действия
+                    </div>
+                </div>
+                <div className="w-72">
+                    <Edit
 
-                        />
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">Edit</span>
+                    />
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">Edit</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>onclick? : function</li>
+                        </ul>
+                        кнопка для редактирования
+                    </div>
+                </div>
+
+            </DropDownSection>
+            <DropDownSection title="Ссылки">
+                <div className="w-72">
+                    <div className=" h-11">
+                        <ButtonLink
+                            link={"#"}
+                            text={"Текст ссылки"} />
+                    </div>
+
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">ButtonLink</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>link : string</li>
+                            <li>text : string</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="w-72">
+                    <div className=" h-11">
+                        <SidebarLink
+                            title={"Текст ссылки"}
+                            link={"#"}
+                            icon={"users"} />
+                    </div>
+
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">ButtonLink</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>title : string</li>
+                            <li>link : string</li>
+                            <li>icon : string   (см. список иконок)</li>
+                        </ul>
+                    </div>
+                </div>
+            </DropDownSection>
+            <DropDownSection title="Всплывашки">
+                <div className="w-72">
+                    <Loader
+                        loadingState={loaderState} />
+                    <ButtonType1
+                        name="вызов Лоадера"
+                        onClick={showLoader}
+                    />
+
+
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">Loader</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>loadingState : boolean</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="w-72">
+                    <PopUpWrapper
+                        state={popupState}
+                        close={() => setPopupState(false)}>
+                        Наполнение для попапа
+
+                    </PopUpWrapper>
+                    <ButtonType1
+                        name="вызов попапа"
+                        onClick={() => setPopupState(true)}
+                    />
+
+
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">PopUpWrapper</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>state:boolean</li>
+                            <li>close:function</li>
+                            <li>children:React.ReactNode</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </DropDownSection>
+            <DropDownSection title="Иконки">
+                <div className="w-72">
+                    <Icons
+                        id="users" />
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">Icons</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>id : users| pages | info | help | lessons | contacts | home | exit</li>
+                        </ul>
+                    </div>
+                    <div className="flex gap-4 flex-wrap mt-5">
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="users" />
+                            <span>users</span>
                         </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>onclick? : function</li>
-                            </ul>
-                            кнопка для редактирования
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="info" />
+                            <span>info</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="help" />
+                            <span>help</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="pages" />
+                            <span>pages</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="lessons" />
+                            <span>lessons</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="home" />
+                            <span>home</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="contacts" />
+                            <span>contacts</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="exit" />
+                            <span>exit</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="">
-                <h2 className="text-center ">Кнопки</h2>
-                <div className="flex gap-7">
-                    <div className="w-72">
-                        <div className=" h-11">
-                            <ButtonLink
-                                link={"#"}
-                                text={"Текст ссылки"} />
-                        </div>
+            </DropDownSection>
+            <DropDownSection title="Поля для Formik">
+                <Formik initialValues={{
+                    email: "",
+                    password: ""
+                }}
+                    onSubmit={(values) => console.log('asdfaa')}
+                >
+                    {({ errors, touched }) => (
+                        <Form className=" flex flex-col gap-4">
 
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">ButtonLink</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>link : string</li>
-                                <li>text : string</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="w-72">
-                        <div className=" h-11">
-                            <SidebarLink
-                                title={"Текст ссылки"}
-                                link={"#"}
-                                icon={"users"} />
-                        </div>
-
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">SidebarLink</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>title : string</li>
-                                <li>link : string</li>
-                                <li>icon : string   (см. список иконок)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div className="">
-                <h2 className="text-center ">Обёртки</h2>
-                <div className="flex gap-7">
-                    <div className="w-72">
-                        <Loader
-                            loadingState={loaderState} />
-                        <ButtonType1
-                            name="вызов Лоадера"
-                            onClick={showLoader}
-                        />
+                            <div className="w-72">
+                                <InputField
+                                    validateFunc={function (): void {
+                                        throw new Error("Function not implemented.");
+                                    }}
+                                    error={errors.email}
+                                    touched={touched.email}
+                                    type="email"
+                                    name={"testField"}
+                                    placeholder="Placeholder"
+                                    title={"Заголовок"} />
+                                <div className="flex flex-row gap-2">
+                                    <span className="font-bold">имя компонента:</span>
+                                    <span className="font-bold text-green-900">InputField</span>
+                                </div>
+                                <div className="">
+                                    Параметры:
+                                    <ul>
+                                        <li>error: вставляются ошибки от формика</li>
+                                        <li>touched:вставляется состояние от формика</li>
+                                        <li>type:text | email</li>
+                                        <li>name:string</li>
+                                        <li>placeholder:string</li>
+                                        <li>title:Заголовок</li>
+                                    </ul>
+                                </div>
 
 
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">Loader</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>loadingState : boolean</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="w-72">
-                        <PopUpWrapper
-                            state={popupState}
-                            close={() => setPopupState(false)}>
-                            Наполнение для попапа
-
-                        </PopUpWrapper>
-                        <ButtonType1
-                            name="вызов попапа"
-                            onClick={() => setPopupState(true)}
-                        />
-
-
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">PopUpWrapper</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>state:boolean</li>
-                                <li>close:function</li>
-                                <li>children:React.ReactNode</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div className="">
-                <h2 className="text-center ">Иконки</h2>
-                <div className="flex gap-7">
-
-                    <div className="w-72">
-                        <Icons
-                            id="users" />
-                        <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">Icons</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>id : users| pages | info | help | lessons | contacts | home | exit</li>
-                            </ul>
-                        </div>
-                        <div className="flex gap-4 flex-wrap mt-5">
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="users" />
-                                <span>users</span>
                             </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="info" />
-                                <span>info</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="help" />
-                                <span>help</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="pages" />
-                                <span>pages</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="lessons" />
-                                <span>lessons</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="home" />
-                                <span>home</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="contacts" />
-                                <span>contacts</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <Icons
-                                    id="exit" />
-                                <span>exit</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <div className="">
-            <h2>Поля для formik</h2>
-
-            <Formik initialValues={{
-                email: "",
-                password: ""
-            }}
-                onSubmit={(values) => console.log('asdfaa')}
-            >
-                {({ errors, touched }) => (
-                     <Form className=" flex flex-col gap-4">
-
-                        <div className="w-72">
-                    <InputField
-                        validateFunc={function (): void {
-                            throw new Error("Function not implemented.");
-                        }}
-                        error={errors.email}
-                        touched={touched.email}
-                        type="email"
-                        name={"testField"}
-                        placeholder="Placeholder"
-                        title={"Заголовок"} />
-                       <div className="flex flex-row gap-2">
-                            <span className="font-bold">имя компонента:</span>
-                            <span className="font-bold text-green-900">InputField</span>
-                        </div>
-                        <div className="">
-                            Параметры:
-                            <ul>
-                                <li>error: вставляются ошибки от формика</li>
-                                <li>touched:вставляется состояние от формика</li>
-                                <li>type:text | email</li>
-                                <li>name:string</li>
-                                <li>placeholder:string</li>
-                                <li>title:Заголовок</li>
-                            </ul>
-                        </div>
-
-
-                                            </div>
-                            </Form>
+                        </Form>
 
                     )}
 
 
 
 
-</Formik>
-            </div>
+                </Formik>
+
+            </DropDownSection>
+
 
         </>
     )
