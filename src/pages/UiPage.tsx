@@ -11,6 +11,7 @@ import { WhiteButton } from "../components/ui/buttons/WhiteButton";
 import { InputField } from "../components/ui/form/InputField";
 import { Form, Formik } from "formik";
 import { DropDownSection } from "../components/uiPage/DropDownSection";
+import { BackButton } from "../components/ui/buttons/BackButton";
 
 
 export const UiPage: FC = () => {
@@ -42,6 +43,18 @@ export const UiPage: FC = () => {
                             <li>type : bytton | submit</li>
                             <li>onclick? : function</li>
                         </ul>
+                    </div>
+                </div>
+                <div className="w-72">
+                    <BackButton/>
+                    <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">BackButton</span>
+                    </div>
+                    <div className="">
+                        Параметры не принимает<br/>
+                        Возвращает на предыдущую страницу
+                        
                     </div>
                 </div>
                 <div className="w-72">
@@ -243,6 +256,11 @@ export const UiPage: FC = () => {
                             <Icons
                                 id="exit" />
                             <span>exit</span>
+                        </div>                        
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="left" />
+                            <span>left</span>
                         </div>
                     </div>
                 </div>
