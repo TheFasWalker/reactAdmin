@@ -13,6 +13,7 @@ import { Form, Formik } from "formik";
 import { DropDownSection } from "../components/uiPage/DropDownSection";
 import { BackButton } from "../components/ui/buttons/BackButton";
 import { FileInput } from "../components/ui/form/FileInput";
+import { MultiFileInput } from "../components/ui/form/HOC/MultiFileInput";
 
 
 
@@ -30,7 +31,7 @@ export const UiPage: FC = () => {
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
 
-
+<MultiFileInput/>
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
@@ -315,7 +316,7 @@ export const UiPage: FC = () => {
                                     title='Загрузить фото'/>
                                 <div className="flex flex-row gap-2">
                                     <span className="font-bold">имя компонента:</span>
-                                    <span className="font-bold text-green-900">InputField</span>
+                                    <span className="font-bold text-green-900">FileInput</span>
                                 </div>
                                 <div className="">
                                     Параметры:

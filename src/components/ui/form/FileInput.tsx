@@ -3,10 +3,11 @@ import { FC, useRef, useState } from "react"
 interface FileInputInterface{
     name:string,
     type?:'photo',
-    title: string
-
+    title: string,
+    onFileAdded?:() => void;
+    deleteItem?:()=>void;
 }
-export const FileInput:FC<FileInputInterface>=({name,type,title})=>{
+export const FileInput:FC<FileInputInterface>=({name,type,title,onFileAdded,deleteItem})=>{
 const [fileName, setFileName] = useState('')
 const [fileSize, setFileSize] = useState('')
 const[photoUrl, setPhotoUrl] = useState<string|null>()
@@ -31,6 +32,9 @@ const addingImage =(e: React.ChangeEvent<HTMLInputElement>)=>{
             setPhotoUrl(photoUrl)
         }
     }
+    if(onFileAdded){
+        onFileAdded()
+    }
     
 
 }
@@ -39,7 +43,10 @@ const deleteInputFile=()=>{
     inputRef.current.value='';
     setFileName("");
     setFileSize("");
-    setPhotoUrl(null)
+    setPhotoUrl(null);
+    if(deleteItem){
+        deleteItem()
+    }
 }
 
     return(
