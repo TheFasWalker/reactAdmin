@@ -1,12 +1,15 @@
 import { FC, useRef, useState } from "react"
 
-interface PhotoInputInterface{
-    name:string
+interface FileInputInterface{
+    name:string,
+    type?:'photo',
+    title: string
 
 }
-export const PhotoInput:FC<PhotoInputInterface>=({name})=>{
+export const FileInput:FC<FileInputInterface>=({name,type,title})=>{
 const [fileName, setFileName] = useState('')
 const [fileSize, setFileSize] = useState('')
+const[photoUrl, setPhotoUrl] = useState<string|null>()
 const inputRef = useRef<HTMLInputElement>(null)
 
 function formatFileSize(bytes:number) {
@@ -19,10 +22,16 @@ function formatFileSize(bytes:number) {
    
  
 const addingImage =(e: React.ChangeEvent<HTMLInputElement>)=>{
-    if(e.target.files && e.target.files[0]){
-        setFileName(e.target.files[0].name)
-        setFileSize(formatFileSize(e.target.files[0].size))
+    const file = e.target.files?.[0]
+    if(file){
+        setFileName(file.name)
+        setFileSize(formatFileSize(file.size))
+        if(type == 'photo'){
+            const photoUrl = URL.createObjectURL(file)
+            setPhotoUrl(photoUrl)
+        }
     }
+    
 
 }
 const deleteInputFile=()=>{
@@ -30,20 +39,29 @@ const deleteInputFile=()=>{
     inputRef.current.value='';
     setFileName("");
     setFileSize("");
+    setPhotoUrl(null)
 }
 
-    return(<>
+    return(
+    
+    <div
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+        {photoUrl&& (
+            <img className="w-full h-full aspect-square mb-3" src={photoUrl} alt="" />
+        )}
+        
         {fileName !='' && (
-            <span className="flex flex-row gap-2 ">
+            <span className="flex flex-row items-center gap-2 ">
                 <span>{fileName} {fileSize}</span>
                 <button onClick={deleteInputFile} className="rounded border hover:bg-slate-400"><svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6"></path></svg></button>
             </span>
         )}
-        <label className="flex flex-col gap-1 mb-3 ">
-            {fileName== ''  && (<span>загрузить фото</span>)}
+        <label className="flex flex-col gap-1 cursor-pointer ">
+            {fileName== ''  && (<span>{title}</span>)}
             
             
             <input
+            accept={type =='photo' ?'image/\*' : ''}
             ref={inputRef}
             className="hidden" 
             type="file" 
@@ -51,6 +69,6 @@ const deleteInputFile=()=>{
             onChange={addingImage}
              />
         </label>
-        </>
+        </div>
     )
 }

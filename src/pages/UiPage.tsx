@@ -12,7 +12,7 @@ import { InputField } from "../components/ui/form/InputField";
 import { Form, Formik } from "formik";
 import { DropDownSection } from "../components/uiPage/DropDownSection";
 import { BackButton } from "../components/ui/buttons/BackButton";
-import { PhotoInput } from "../components/ui/form/PhotoInput";
+import { FileInput } from "../components/ui/form/FileInput";
 
 
 
@@ -29,8 +29,7 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
-            <PhotoInput
-                name="fileinput"/>
+
 
             <DropDownSection title="Кнопки">
                 <div className="w-72">
@@ -310,7 +309,10 @@ export const UiPage: FC = () => {
 
                             </div>
                             <div className="w-72">
-
+                                <FileInput
+                                    type="photo"
+                                    name="fileinput"
+                                    title='Загрузить фото'/>
                                 <div className="flex flex-row gap-2">
                                     <span className="font-bold">имя компонента:</span>
                                     <span className="font-bold text-green-900">InputField</span>
@@ -318,12 +320,9 @@ export const UiPage: FC = () => {
                                 <div className="">
                                     Параметры:
                                     <ul>
-                                        <li>error: вставляются ошибки от формика</li>
-                                        <li>touched:вставляется состояние от формика</li>
-                                        <li>type:text | email</li>
+                                       <li>type?: photo (видны только фотки)</li>
+                                        <li>title:string</li>
                                         <li>name:string</li>
-                                        <li>placeholder:string</li>
-                                        <li>title:Заголовок</li>
                                     </ul>
                                 </div>
 
