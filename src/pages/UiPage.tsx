@@ -31,10 +31,10 @@ export const UiPage: FC = () => {
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
 
-<MultiFileInput
-title="Место для вашего фото"
-type="photo"
-/>
+            <MultiFileInput
+                title="Место для вашего фото"
+                type="photo"
+            />
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
@@ -54,15 +54,15 @@ type="photo"
                     </div>
                 </div>
                 <div className="w-72">
-                    <BackButton/>
+                    <BackButton />
                     <div className="flex flex-row gap-2">
                         <span className="font-bold">имя компонента:</span>
                         <span className="font-bold text-green-900">BackButton</span>
                     </div>
                     <div className="">
-                        Параметры не принимает<br/>
+                        Параметры не принимает<br />
                         Возвращает на предыдущую страницу
-                        
+
                     </div>
                 </div>
                 <div className="w-72">
@@ -91,7 +91,7 @@ type="photo"
                     />
                     <div className="flex flex-row gap-2">
                         <span className="font-bold">имя компонента:</span>
-                        <span className="font-bold text-green-900">Edit</span>
+                        <span className="font-bold text-green-900">Trash</span>
                     </div>
                     <div className="">
                         Параметры:
@@ -264,7 +264,7 @@ type="photo"
                             <Icons
                                 id="exit" />
                             <span>exit</span>
-                        </div>                        
+                        </div>
                         <div className="flex flex-col items-center">
                             <Icons
                                 id="left" />
@@ -324,52 +324,73 @@ type="photo"
 
             </DropDownSection>
             <DropDownSection title="Компоненты форм">
-                <div className=" flex flex-row gap-2">
-                <div className="w-72 flex flex-col gap-2">
-                    <span>Поле для загрузки фото<br/>Загрузка только фоток!</span>
+                <div className=" flex flex-col gap-3 w-full">
+                    <div className=" flex flex-row gap-2">
+                        <div className="w-72 flex flex-col gap-2">
+                            <span>Поле для загрузки<br />Загрузка только фоток!<br /> <b>type="photo"</b></span>
 
-                                <FileInput
-                                    type="photo"
-                                    name="fileinput"
-                                    title='Загрузить фото'/>
-                                <div className="flex flex-row gap-2">
-                                    <span className="font-bold">имя компонента:</span>
-                                    <span className="font-bold text-green-900">FileInput</span>
-                                </div>
-                                <div className="">
-                                    Параметры:
-                                    <ul>
-                                       <li>type?: photo (видны только фотки)</li>
-                                        <li>title:string</li>
-                                        <li>name:string</li>
-                                    </ul>
-                                </div>
-
-
+                            <FileInput
+                                type="photo"
+                                name="fileinput"
+                                title='Загрузить фото' />
+                            <div className="flex flex-row gap-2">
+                                <span className="font-bold">имя компонента:</span>
+                                <span className="font-bold text-green-900">FileInput</span>
                             </div>
-                            <div className="w-72 flex flex-col gap-2">
-                    <span>Поле для загрузки фото<br/>Загрузка любых файлов</span>
-                                <FileInput
-                                    type="photo"
-                                    name="fileinput"
-                                    title='загрузить файл'/>
-                                <div className="flex flex-row gap-2">
-                                    <span className="font-bold">имя компонента:</span>
-                                    <span className="font-bold text-green-900">FileInput</span>
-                                </div>
-                                <div className="">
-                                    Параметры:
-                                    <ul>
-                                       <li>type?: photo (видны только фотки)</li>
-                                        <li>title:string</li>
-                                        <li>name:string</li>
-                                    </ul>
-                                </div>
-
-
+                            <div className="">
+                                Параметры:
+                                <ul>
+                                    <li>type?: photo (видны только фотки)</li>
+                                    <li>title:string</li>
+                                    <li>name:string</li>
+                                </ul>
                             </div>
+
+
+                        </div>
+                        <div className="w-72 flex flex-col gap-2">
+                            <span>Поле для загрузки<br />Загрузка любых файлов<br /> <b>type отсутствует</b></span>
+                            <FileInput
+                                type="photo"
+                                name="fileinput"
+                                title='загрузить файл' />
+                            <div className="flex flex-row gap-2">
+                                <span className="font-bold">имя компонента:</span>
+                                <span className="font-bold text-green-900">FileInput</span>
+                            </div>
+                            <div className="">
+                                Параметры:
+                                <ul>
+                                    <li>type?: photo (видны только фотки)</li>
+                                    <li>title:string</li>
+                                    <li>name:string</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div className=" p-2 border rounded w-full">
+                        <MultiFileInput
+                            title="Загрузите фотографию"
+                            type="photo"
+                        />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">MultiFileInput</span>
+                        </div>
+                        <span><b>type='photo'</b></span>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>type?: photo (видны только фотки)</li>
+                                <li>title:string</li>
+                                <li>имя поля будет состоять из "<i>file_«randomId»</i>"</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
+
             </DropDownSection>
 
         </>
