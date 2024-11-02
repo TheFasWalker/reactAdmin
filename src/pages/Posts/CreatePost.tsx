@@ -2,6 +2,9 @@ import { FC, useEffect, useState } from "react";
 import { CreateEditHeader } from "../../components/general/CreateEditHeader";
 import { Editor } from '@tinymce/tinymce-react';
 import { MultiFileInput } from "../../components/ui/form/HOC/MultiFileInput";
+import { ButtonType1 } from "../../components/ui/buttons/SybmitButton";
+import { WhiteButton } from "../../components/ui/buttons/WhiteButton";
+import { ButtonLink } from "../../components/ui/buttons/links/ButtonLink";
 
 export const CreatePost:FC=()=>{
     const editorApiKey = import.meta.env.VITE_EDITOR_API_KEY
@@ -15,10 +18,6 @@ export const CreatePost:FC=()=>{
     const handleEditorChange = (content:string, editor: TinyMCEEditorInterface) => {
         setContent(content);
     };
-    useEffect(()=>{
-        console.log('asd')
-        console.log(editorApiKey)
-    },[])
     return(
         <div className="">
             <CreateEditHeader
@@ -39,10 +38,14 @@ export const CreatePost:FC=()=>{
                 onEditorChange={handleEditorChange}
 
             />
-            <div className="">
+            <div className="pt-4">
                 <MultiFileInput
                 title="Добавить фото"
                 type="photo"/>
+            </div>
+            <div className="grid grid-cols-2 gap-2 mt-4">
+                <ButtonType1 name='Сохранить'     />
+                <WhiteButton title="Отмена"/>
             </div>
         </div>
     )
