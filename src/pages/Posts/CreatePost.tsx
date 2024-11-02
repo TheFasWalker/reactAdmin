@@ -1,8 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { CreateEditHeader } from "../../components/general/CreateEditHeader";
 import { Editor } from '@tinymce/tinymce-react';
+import { MultiFileInput } from "../../components/ui/form/HOC/MultiFileInput";
 
 export const CreatePost:FC=()=>{
+    const editorApiKey = import.meta.env.VITE_EDITOR_API_KEY
     interface TinyMCEEditorInterface {
         getContent(): string; 
         setContent(content: string): void; 
@@ -13,6 +15,10 @@ export const CreatePost:FC=()=>{
     const handleEditorChange = (content:string, editor: TinyMCEEditorInterface) => {
         setContent(content);
     };
+    useEffect(()=>{
+        console.log('asd')
+        console.log(editorApiKey)
+    },[])
     return(
         <div className="">
             <CreateEditHeader
@@ -22,7 +28,7 @@ export const CreatePost:FC=()=>{
 
 
         <Editor
-            apiKey='a3dmilatwmfsmji2q2818ite1q0zkdkvn9bb1zd2thldryh9'
+            apiKey={editorApiKey}
                 initialValue="<p>Начните писать здесь...</p>"
                 textareaName="description"
                 init={{
@@ -33,6 +39,11 @@ export const CreatePost:FC=()=>{
                 onEditorChange={handleEditorChange}
 
             />
+            <div className="">
+                <MultiFileInput
+                title="Добавить фото"
+                type="photo"/>
+            </div>
         </div>
     )
 }
