@@ -14,6 +14,7 @@ import { DropDownSection } from "../components/uiPage/DropDownSection";
 import { BackButton } from "../components/ui/buttons/BackButton";
 import { FileInput } from "../components/ui/form/FileInput";
 import { MultiFileInput } from "../components/ui/form/HOC/MultiFileInput";
+import { UserRole } from "../components/ui/UserRole";
 
 
 
@@ -266,6 +267,24 @@ export const UiPage: FC = () => {
                                 id="left" />
                             <span>left</span>
                         </div>
+                    </div>
+                </div>
+                <div className="w-72">
+<UserRole
+role="admin"/>
+<UserRole
+role="manager"/>
+<UserRole
+role="partner"/>
+                <div className="flex flex-row gap-2">
+                        <span className="font-bold">имя компонента:</span>
+                        <span className="font-bold text-green-900">UserRole</span>
+                    </div>
+                    <div className="">
+                        Параметры:
+                        <ul>
+                            <li>role: admin | manager | partner</li>
+                        </ul>
                     </div>
                 </div>
             </DropDownSection>
