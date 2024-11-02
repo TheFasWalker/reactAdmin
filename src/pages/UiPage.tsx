@@ -366,7 +366,6 @@ role="partner"/>
                         <div className="w-72 flex flex-col gap-2">
                             <span>Поле для загрузки<br />Загрузка любых файлов<br /> <b>type отсутствует</b></span>
                             <FileInput
-                                type="photo"
                                 name="fileinput"
                                 title='загрузить файл' />
                             <div className="flex flex-row gap-2">
