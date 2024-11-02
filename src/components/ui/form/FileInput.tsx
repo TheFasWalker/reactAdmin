@@ -4,10 +4,11 @@ interface FileInputInterface{
     name:string,
     type?:'photo',
     title: string,
+    id?:string,
     onFileAdded?:() => void;
     deleteItem?:()=>void;
 }
-export const FileInput:FC<FileInputInterface>=({name,type,title,onFileAdded,deleteItem})=>{
+export const FileInput:FC<FileInputInterface>=({name,type,title,onFileAdded,deleteItem,id})=>{
 const [fileName, setFileName] = useState('')
 const [fileSize, setFileSize] = useState('')
 const[photoUrl, setPhotoUrl] = useState<string|null>()
@@ -51,7 +52,7 @@ const deleteInputFile=()=>{
 
     return(
     
-    <div
+    <div id={id}
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
         {photoUrl&& (
             <img className="w-full h-full aspect-square mb-3" src={photoUrl} alt="" />

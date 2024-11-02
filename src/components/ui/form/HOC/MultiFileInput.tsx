@@ -1,27 +1,34 @@
 import { FC, useState } from "react";
-import { WhiteButton } from "../../buttons/WhiteButton";
 import { FileInput } from "../FileInput";
+import nextId from "react-id-generator";
+
+
+
 
 export const MultiFileInput:FC=()=>{
-    const [fileInputs, setFileInputs] = useState<number[]>([0]);
-    const handleFileAdded=()=>{
-        setFileInputs((prev)=>[...prev,prev.length])
-    }
-    const handleFileRemoved =(index:number)=>{
-        setFileInputs((prev)=>prev.filter((_,i)=>i !== index));
-    }
+    const [fileInputs, setFileInputs] = useState<{ id: string }[]>([{ id: nextId() }]);
+    const handleFileAdded = () => {
+        setFileInputs((prev) => [
+          ...prev,
+          { id: nextId() },
+        ]);
+      };
+    const handleFileRemoved = (id: string) => {
+        setFileInputs((prev) => prev.filter((item) => item.id !== id));
+      };
     return(
-        <div className=" w-72 flex flex-col gap-2">
-        {fileInputs.map((_, index) => (
+        <div className=" w-full flex flex-wrap gap-2">
+        {fileInputs.map((item) => (
+            <div key={item.id} className="w-72 flex flex-col gap-2 h-fit">
                 <FileInput
-                    key={index}
-                    name={`file-${index}`}
+                id={item.id}
+                    name={`file_${item.id}`}
                     type='photo'
                     title='Загрузите фото'
                     onFileAdded={() => handleFileAdded()} 
-                    deleteItem={()=>handleFileRemoved(index)}
+                    deleteItem={()=>handleFileRemoved(item.id)}
                 />
-            ))}
+            </div>))}
 
 
         </div>
