@@ -2,10 +2,13 @@ import { FC, useState } from "react";
 import { FileInput } from "../FileInput";
 import nextId from "react-id-generator";
 
+interface MultiFileInputInterface {
+  title:string,
+  type?: "photo" 
+}
 
 
-
-export const MultiFileInput:FC=()=>{
+export const MultiFileInput:FC<MultiFileInputInterface>=({title,type})=>{
     const [fileInputs, setFileInputs] = useState<{ id: string }[]>([{ id: nextId() }]);
     const handleFileAdded = () => {
         setFileInputs((prev) => [
@@ -23,8 +26,8 @@ export const MultiFileInput:FC=()=>{
                 <FileInput
                 id={item.id}
                     name={`file_${item.id}`}
-                    type='photo'
-                    title='Загрузите фото'
+                    type={type}
+                    title={title}
                     onFileAdded={() => handleFileAdded()} 
                     deleteItem={()=>handleFileRemoved(item.id)}
                 />

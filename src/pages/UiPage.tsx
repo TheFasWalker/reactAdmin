@@ -31,7 +31,10 @@ export const UiPage: FC = () => {
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
 
-<MultiFileInput/>
+<MultiFileInput
+title="Место для вашего фото"
+type="photo"
+/>
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
