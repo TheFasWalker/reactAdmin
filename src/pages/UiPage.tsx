@@ -389,6 +389,24 @@ export const UiPage: FC = () => {
                             </ul>
                         </div>
                     </div>
+                    <div className=" p-2 border rounded w-full">
+                        <MultiFileInput
+                            title="Загрузите файл"
+                        />
+                        <div className="flex flex-row gap-2">
+                            <span className="font-bold">имя компонента:</span>
+                            <span className="font-bold text-green-900">MultiFileInput</span>
+                        </div>
+                        <span><b>type незаполнен</b></span>
+                        <div className="">
+                            Параметры:
+                            <ul>
+                                <li>type?: photo (видны только фотки)</li>
+                                <li>title:string</li>
+                                <li>имя поля будет состоять из "<i>file_«randomId»</i>"</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </DropDownSection>

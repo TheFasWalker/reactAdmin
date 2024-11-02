@@ -10,6 +10,10 @@ interface MultiFileInputInterface {
 
 export const MultiFileInput:FC<MultiFileInputInterface>=({title,type})=>{
     const [fileInputs, setFileInputs] = useState<{ id: string }[]>([{ id: nextId() }]);
+    let styles:string = ' flex flex-col gap-1'
+    if(type == 'photo'){
+      styles = 'w-full flex flex-wrap gap-2'
+    }
     const handleFileAdded = () => {
         setFileInputs((prev) => [
           ...prev,
@@ -20,7 +24,7 @@ export const MultiFileInput:FC<MultiFileInputInterface>=({title,type})=>{
         setFileInputs((prev) => prev.filter((item) => item.id !== id));
       };
     return(
-        <div className=" w-full flex flex-wrap gap-2">
+        <div className={styles}>
         {fileInputs.map((item) => (
             <div key={item.id} className="w-72 flex flex-col gap-2 h-fit">
                 <FileInput
