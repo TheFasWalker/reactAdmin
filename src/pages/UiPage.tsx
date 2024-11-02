@@ -312,7 +312,22 @@ type="photo"
 
 
                             </div>
-                            <div className="w-72">
+
+                        </Form>
+
+                    )}
+
+
+
+
+                </Formik>
+
+            </DropDownSection>
+            <DropDownSection title="Компоненты форм">
+                <div className=" flex flex-row gap-2">
+                <div className="w-72 flex flex-col gap-2">
+                    <span>Поле для загрузки фото<br/>Загрузка только фоток!</span>
+
                                 <FileInput
                                     type="photo"
                                     name="fileinput"
@@ -332,17 +347,30 @@ type="photo"
 
 
                             </div>
-                        </Form>
+                            <div className="w-72 flex flex-col gap-2">
+                    <span>Поле для загрузки фото<br/>Загрузка любых файлов</span>
+                                <FileInput
+                                    type="photo"
+                                    name="fileinput"
+                                    title='загрузить файл'/>
+                                <div className="flex flex-row gap-2">
+                                    <span className="font-bold">имя компонента:</span>
+                                    <span className="font-bold text-green-900">FileInput</span>
+                                </div>
+                                <div className="">
+                                    Параметры:
+                                    <ul>
+                                       <li>type?: photo (видны только фотки)</li>
+                                        <li>title:string</li>
+                                        <li>name:string</li>
+                                    </ul>
+                                </div>
 
-                    )}
 
-
-
-
-                </Formik>
-
+                            </div>
+                </div>
+                
             </DropDownSection>
-
 
         </>
     )
