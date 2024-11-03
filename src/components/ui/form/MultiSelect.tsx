@@ -17,17 +17,11 @@ interface MultiSelectInterface {
 export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
     const [dropDownMenuState, setdropDownMenuState] = useState(true)
     const [selectedItems, setSelectedItems] = useState<Array<data>>([])
-
+    const checkActiveElem =(value:string, selectedItems: data[]):boolean=>{
+        return !selectedItems.some((elem) => elem.value === value);
+    }
     const addElem = (value: string, title: string) => {
-        let elementInArray = true
-        selectedItems.forEach(elem => {
-            if (elem.title == title && elem.value == value) {
-                console.log(' elem detected')
-                elementInArray = false
-                return;
-            }
-        })
-        if (elementInArray) {
+        if (checkActiveElem(value,selectedItems)) {
             setSelectedItems((prev) => [...prev, { value: value, title: title }])
         }
     }
