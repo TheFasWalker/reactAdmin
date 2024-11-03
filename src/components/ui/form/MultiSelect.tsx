@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 type data = {
     title: string,
     value: string
@@ -16,12 +16,15 @@ interface MultiSelectInterface {
 }
 
 export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
-    const [dropDownMenuState, setdropDownMenuState] = useState(true)
+    const [dropDownMenuState, setdropDownMenuState] = useState(false)
     const [selectedItems, setSelectedItems] = useState<Array<data>>([])
+    const dropDownRef = useRef<HTMLDivElement>(null)
     const checkActiveElem =(value:string, selectedItems: data[]):boolean=>{
         return selectedItems.some((elem) => elem.value === value);
     }
     const toggleElement = (value: string, title: string) => {
+        
+        console.log('asdfaa')
         if (!checkActiveElem(value,selectedItems)) {
             setSelectedItems((prev) => [...prev, { value: value, title: title }])
         }else{
@@ -31,13 +34,26 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
     const removeElement = (value: string) => {
         setSelectedItems((prev) => prev.filter(item => item.value !== value))
     }
+    const missKlick =(e:MouseEvent)=>{
+        if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
+            setdropDownMenuState(false);
+        }
+    }
+    useEffect(()=>{
+        document.addEventListener('mousedown', missKlick);
+        return () => {
+            document.removeEventListener('mousedown', missKlick);
+        };
+    },[])
+    
 
 
     return (
-        <div className=" relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-            {selectedItems.length === 0
+        <div ref={dropDownRef}   className=" relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+           
+           <div className=""  onClick={()=>setdropDownMenuState(!dropDownMenuState)}> {selectedItems.length === 0
                 ?
-                (<span className="flex w-full h-full items-center justify-center"> multiselect</span>)
+                (<span  className="flex w-full h-full items-center justify-center"> multiselect</span>)
                 : (<div className="flex flex-row gap-0.5 flex-wrap">
                     {selectedItems.map((item) => (
 
@@ -49,6 +65,7 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
                     ))}
                 </div>)
             }
+            </div>
             {dropDownMenuState && (
                 <div className="absolute top-[90%] left-0 bg-white w-full flex flex-col border-gray-300 border-b border-r border-l rounded-br-lg rounded-bl-lg max-h-52 overflow-y-scroll">
                     {data.map(item => (
