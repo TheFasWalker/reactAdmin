@@ -21,9 +21,11 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
     const checkActiveElem =(value:string, selectedItems: data[]):boolean=>{
         return selectedItems.some((elem) => elem.value === value);
     }
-    const addElem = (value: string, title: string) => {
+    const toggleElement = (value: string, title: string) => {
         if (!checkActiveElem(value,selectedItems)) {
             setSelectedItems((prev) => [...prev, { value: value, title: title }])
+        }else{
+            removeElement(value)
         }
     }
     const removeElement = (value: string) => {
@@ -51,7 +53,7 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
                 <div className="absolute top-[90%] left-0 bg-white w-full flex flex-col border-gray-300 border-b border-r border-l rounded-br-lg rounded-bl-lg max-h-52 overflow-y-scroll">
                     {data.map(item => (
                         <Button
-                            onclick={() => addElem(item.value, item.title)}
+                            onclick={() => toggleElement(item.value, item.title)}
                             key={item.value}
                             title={item.title}
                             value={item.value}
