@@ -16,6 +16,7 @@ import { FileInput } from "../components/ui/form/FileInput";
 import { MultiFileInput } from "../components/ui/form/HOC/MultiFileInput";
 import { UserRole } from "../components/ui/UserRole";
 import { DropDownSelector } from "../components/ui/form/DropDownSelector";
+import { MultiSelect } from "../components/ui/form/MultiSelect";
 
 
 const dataForDropDown=[
@@ -67,7 +68,26 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
-            
+            <div className="w-72 flex flex-col gap-2">
+
+                            <MultiSelect
+                            data={dataForDropDown}/>
+                            {/* <div className="flex flex-row gap-2">
+                                <span className="font-bold">имя компонента:</span>
+                                <span className="font-bold text-green-900">DropDownSelector</span>
+                            </div>
+                            <div className="">
+                                Параметры:
+                                <ul>
+                                    <li>title:string</li>
+                                    <li>name:string</li>
+                                    <li>data:Array[ {`{title:string , value:string}`}]</li>
+                                </ul>
+                            </div> */}
+
+
+                        </div>
+
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
