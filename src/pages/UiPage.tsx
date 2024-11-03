@@ -15,7 +15,43 @@ import { BackButton } from "../components/ui/buttons/BackButton";
 import { FileInput } from "../components/ui/form/FileInput";
 import { MultiFileInput } from "../components/ui/form/HOC/MultiFileInput";
 import { UserRole } from "../components/ui/UserRole";
+import { DropDownSelector } from "../components/ui/form/DropDownSelector";
 
+
+const dataForDropDown=[
+    {
+        title:'title1',
+        value:'value1'
+    },
+    {
+        title:'title2',
+        value:'value2'
+    },
+    {
+        title:'title3',
+        value:'value3'
+    },
+    {
+        title:'title4',
+        value:'value4'
+    },
+    {
+        title:'title5',
+        value:'value5'
+    },
+    {
+        title:'title6',
+        value:'value6'
+    },
+    {
+        title:'title7',
+        value:'value7'
+    },
+    {
+        title:'title8',
+        value:'value8'
+    },
+]
 
 
 export const UiPage: FC = () => {
@@ -31,7 +67,7 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
-
+            
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
@@ -378,6 +414,27 @@ role="partner"/>
                                     <li>type?: photo (видны только фотки)</li>
                                     <li>title:string</li>
                                     <li>name:string</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <div className="w-72 flex flex-col gap-2">
+                            <span>селектор дропдаун</span>
+                                <DropDownSelector 
+                                title="Кнопка дропа" 
+                                name="name"
+                                data={dataForDropDown}/>
+                            <div className="flex flex-row gap-2">
+                                <span className="font-bold">имя компонента:</span>
+                                <span className="font-bold text-green-900">DropDownSelector</span>
+                            </div>
+                            <div className="">
+                                Параметры:
+                                <ul>
+                                    <li>title:string</li>
+                                    <li>name:string</li>
+                                    <li>data:Array[ {`{title:string , value:string}`}]</li>
                                 </ul>
                             </div>
 
