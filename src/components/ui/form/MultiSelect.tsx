@@ -7,7 +7,8 @@ type data = {
 interface buttonInterface {
     title: string,
     value: string,
-    onclick: () => void
+    onclick: () => void,
+    activity:boolean
 
 }
 interface MultiSelectInterface {
@@ -18,10 +19,10 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
     const [dropDownMenuState, setdropDownMenuState] = useState(true)
     const [selectedItems, setSelectedItems] = useState<Array<data>>([])
     const checkActiveElem =(value:string, selectedItems: data[]):boolean=>{
-        return !selectedItems.some((elem) => elem.value === value);
+        return selectedItems.some((elem) => elem.value === value);
     }
     const addElem = (value: string, title: string) => {
-        if (checkActiveElem(value,selectedItems)) {
+        if (!checkActiveElem(value,selectedItems)) {
             setSelectedItems((prev) => [...prev, { value: value, title: title }])
         }
     }
@@ -54,6 +55,7 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
                             key={item.value}
                             title={item.title}
                             value={item.value}
+                            activity={checkActiveElem(item.value, selectedItems)}
                         />
                     ))}
                 </div>
@@ -62,13 +64,18 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
     )
 }
 
-const Button: FC<buttonInterface> = ({ title, value, onclick }) => {
+const Button: FC<buttonInterface> = ({ title, value, onclick,activity }) => {
     return (
         <button
             onClick={onclick}
-            className={`w-full flex items-center justify-center p-2 text-sm text-gray-700 hover:bg-gray-100  `}
+            className={` relative w-full flex items-center justify-center p-2 text-sm text-gray-700 hover:bg-gray-100  ${activity ?'bg-slate-200 border border-collapse border-gray-300 ' : ' ' }`}
             data-value={value}
-        >{title}
+        >
+            {activity && (
+            <span className=" absolute top-0 right-0 text-[10px]">selected!</span>
+            )}
+
+            {title}
         </button>
     )
 }
