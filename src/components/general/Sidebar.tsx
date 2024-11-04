@@ -44,7 +44,7 @@ export const Sidebar = () => {
            <li>
             <SidebarLink
               title="Компоненты"
-              link={Routes.help}
+              link={Routes.components}
               icon='help' />
           </li>
 
