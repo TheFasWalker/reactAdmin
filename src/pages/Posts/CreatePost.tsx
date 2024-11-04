@@ -5,6 +5,7 @@ import { MultiFileInput } from "../../components/ui/form/HOC/MultiFileInput";
 import { ButtonType1 } from "../../components/ui/buttons/SybmitButton";
 import { WhiteButton } from "../../components/ui/buttons/WhiteButton";
 import { ButtonLink } from "../../components/ui/buttons/links/ButtonLink";
+import { Toggler } from "../../components/ui/form/Toggler";
 
 export const CreatePost:FC=()=>{
     const editorApiKey = import.meta.env.VITE_EDITOR_API_KEY
@@ -43,6 +44,10 @@ export const CreatePost:FC=()=>{
                 title="Добавить фото"
                 type="photo"/>
             </div>
+            <div className="py-4">
+                <Toggler title={"Статус публикации"} name={"publishing"}/>
+            </div>
+
             <div className="grid grid-cols-2 gap-2 mt-4">
                 <ButtonType1 name='Сохранить'     />
                 <WhiteButton title="Отмена"/>
