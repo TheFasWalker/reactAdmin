@@ -1,10 +1,8 @@
 import { FC, useState } from "react";
 import { UserPreview } from "../components/users/UserPreview";
 import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
-import { PopUpWrapper } from "../components/general/PopUpWrapper";
-import { DropDownSelector } from "../components/ui/form/DropDownSelector";
-import { UserRolesData } from "../staticData/roles";
-import { InputField } from "../components/ui/form/InputField";
+import { UserCreatePopup } from "../components/users/UserCreatePopup";
+
 
 const users = [
     {
@@ -79,78 +77,44 @@ const users = [
     }
 ];
 
-export const UsersPage:FC =()=>{
-    const [creatingUserPopupState, setCreatingUserPopupState ] = useState(false)
-    return(
+export const UsersPage: FC = () => {
+    const [creatingUserPopupState, setCreatingUserPopupState] = useState(false)
+    return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-            <PopUpWrapper 
-            state={creatingUserPopupState} 
-            close={()=>setCreatingUserPopupState(false)} >
-                <div className="flex flex-col gap-5">
-                    <h1 className=" font-bold text-2xl">Создание пользователя</h1>
-                    <form className="flex flex-col gap-3" action="#">
-                        <InputField 
-                            title={"Имя"} 
-                            name={"name"} 
-                            placeholder={"UserName"} 
-                            type="text"
-                        />
-                        <InputField 
-                            title={"Фамилия"} 
-                            name={"family"} 
-                            placeholder={"UserFamily"} 
-                            type="text"
-                        />
-                        <InputField 
-                            title={"Почта"} 
-                            name={"email"} 
-                            placeholder={"UserEmail"} 
-                            type="email"
-                        />
-                        <DropDownSelector 
-                            title="Роль"
-                            name={"userRole"} 
-                            data={UserRolesData}
-                        />
-                        <ButtonType1
-                        name="Создать пользователя" type="submit"/>
-                
-                    </form>
-                </div>
+            <UserCreatePopup
+                popupState={creatingUserPopupState}
+                closePopup={() => setCreatingUserPopupState(false)} />
+            <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
+                <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                    <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                        <div className="w-full md:w-1/2">
 
-                
-            </PopUpWrapper>
-    <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                <div className="w-full md:w-1/2">
-                    
-                </div>
-                <div className="w-fit  flex flex-col space-y-2  items-center justify-center">
-                    <ButtonType1 onClick={()=>setCreatingUserPopupState(true)} name="Добавить пользователя"/>
+                        </div>
+                        <div className="w-fit  flex flex-col space-y-2  items-center justify-center">
+                            <ButtonType1 onClick={() => setCreatingUserPopupState(true)} name="Добавить пользователя" />
+                        </div>
+                    </div>
+                    <div className="overflow-x-auto">
+                        <div className="grid grid-cols-[250px_150px_1fr_200px] text-xs text-gray-700  bg-gray-50 font-bold">
+                            <span className="px-4 py-3 text-center">UserName</span>
+                            <span className="px-4 py-3 text-center">UserRole</span>
+                            <span className="px-4 py-3 text-center">UserData</span>
+                            <span className="px-4 py-3">UserActions</span>
+                        </div>
+                        {users.map(user => (
+                            <UserPreview
+                                email={user.email}
+                                activity={user.activity}
+                                name={user.name}
+                                family={user.family}
+                                userRole={user.userRole} />
+                        ))}
+
+
+                    </div>
+
                 </div>
             </div>
-            <div className="overflow-x-auto">
-                <div className="grid grid-cols-[250px_150px_1fr_200px] text-xs text-gray-700  bg-gray-50 font-bold">
-                    <span className="px-4 py-3 text-center">UserName</span>
-                    <span className="px-4 py-3 text-center">UserRole</span>
-                    <span className="px-4 py-3 text-center">UserData</span>
-                    <span className="px-4 py-3">UserActions</span>
-                </div>
-                    {users.map(user=>(
-                        <UserPreview
-                        email={user.email}
-                        activity={user.activity}
-                        name={user.name}
-                        family = {user.family}
-                        userRole={user.userRole}/>
-                    ))}
-                       
-
-            </div>
-
-        </div>
-    </div>
-    </section>
+        </section>
     )
 }
