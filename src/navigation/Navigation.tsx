@@ -22,7 +22,7 @@ export const Navigation:FC =()=>{
                 <Route path="/" element={<LoginPage/>}/>
 
                 <Route path="admin" element={<AdminLayout/>}>
-                    <Route index element={<HomePage/>} />
+                    <Route path="home" element={<HomePage/>} />
                     <Route path="components" element ={<UiPage/>}/>
                     <Route path="docs" element={<DocsPage/>}/>
                     <Route path="help" element={<HelpPage/>}/>

@@ -13,7 +13,7 @@ export const Sidebar = () => {
 
         <ul className="space-y-2">
           <li>
-            <SidebarLink title={"Главная"} link={"/admin"} icon={"home"} />
+            <SidebarLink title={"Главная"} link={"home"} icon={"home"} />
           </li>
           <li>
             <SidebarLink title={"Уроки"} link={"lessons"} icon={"lessons"} />
