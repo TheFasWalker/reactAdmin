@@ -4,6 +4,7 @@ import { DropDownSelector } from "../ui/form/DropDownSelector";
 import { ButtonType1 } from "../ui/buttons/SybmitButton";
 import { PopUpWrapper } from "../general/PopUpWrapper";
 import { UserRolesData } from "../../staticData/roles";
+import { PasswordInput } from "../ui/form/PasswordInput";
 interface UserCreatePopupInterface {
     popupState:boolean,
     closePopup:()=>void
@@ -34,6 +35,7 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                         placeholder={"UserEmail"} 
                         type="email"
                     />
+                    <PasswordInput/>
                     <DropDownSelector 
                         title="Роль"
                         name={"userRole"} 
