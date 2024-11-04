@@ -7,11 +7,18 @@ import { Routes } from "../../navigation/routes"
 interface PostPreview {
     img: string,
     description: string,
-    postId:string
+    postId:string,
+    activity?:boolean
 }
 export const PostPreview: FC<PostPreview> = ({ img, description,postId }) => {
     return (
-        <div className="flex flex-col p-5  rounded-lg gap-5 relative shadow bg-gray-200">
+        <div className="flex flex-col p-5  rounded-lg gap-5 relative shadow bg-gray-200 overflow-hidden">
+            {true && (
+                <div className="flex flex-col items-center w-fit bg-red-500 text-white p-2 absolute top-0 left-0 rounded-br-xl font-bold">
+                    <span>not</span>
+                    <span>published</span>
+                </div>
+            )}
             <NavLink to={Routes.postShow.replace(':id', postId)} className=" flex items-center justify-center h-full ">
                 {img && (
                     <img className="w-full h-full object-cover" src={img} alt="" />
