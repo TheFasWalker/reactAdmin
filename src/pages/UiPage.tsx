@@ -18,6 +18,7 @@ import { UserRole } from "../components/ui/UserRole";
 import { DropDownSelector } from "../components/ui/form/DropDownSelector";
 import { MultiSelect } from "../components/ui/form/MultiSelect";
 import { Toggler } from "../components/ui/form/Toggler";
+import { Pagination } from "../components/general/Pagination";
 
 
 const dataForDropDown=[
@@ -69,10 +70,6 @@ export const UiPage: FC = () => {
     return (
         <>
             <h1 className=" text-center font-bold text-3xl mb-10">Страница для ui компонентов</h1>
-            <Toggler
-                title="toggleTitle"
-                name="name" 
-                />
             <DropDownSection title="Кнопки">
                 <div className="w-72">
                     <ButtonType1
@@ -523,6 +520,18 @@ title="TogglerTitle"/>
                 </div>
 
             </DropDownSection>
+            <DropDownSection title="Прочие компоненты">
+                <div className="w-full flex flex-col">
+                    <span> пагинация</span>
+                    <Pagination/>
+                    <span><b>пока сделан только визуал для компонента.</b></span>
+
+                </div>
+
+
+
+            </DropDownSection>
+
 
         </>
     )

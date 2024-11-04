@@ -2,7 +2,7 @@ import { FC } from "react"
 
 export const Pagination:FC=()=>{
     return(
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center py-3">
             <div className=" w-fit flex flex-row gap-3">
                 <ArrowButton direction="prev"/>
                 <NumberButton
