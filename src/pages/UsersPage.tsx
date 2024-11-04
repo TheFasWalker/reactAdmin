@@ -2,6 +2,59 @@ import { FC } from "react";
 import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 import { UserPreview } from "../components/users/UserPreview";
 
+const users = [
+    {
+        email: "user1@example.com",
+        userRole: "admin",
+        activity: true
+    },
+    {
+        email: "user2@example.com",
+        userRole: "partner",
+        activity: false
+    },
+    {
+        email: "user3@example.com",
+        userRole: "manager",
+        activity: true
+    },
+    {
+        email: "user4@example.com",
+        userRole: "admin",
+        activity: false
+    },
+    {
+        email: "user5@example.com",
+        userRole: "partner",
+        activity: true
+    },
+    {
+        email: "user6@example.com",
+        userRole: "manager",
+        activity: false
+    },
+    {
+        email: "user7@example.com",
+        userRole: "admin",
+        activity: true
+    },
+    {
+        email: "user8@example.com",
+        userRole: "partner",
+        activity: true
+    },
+    {
+        email: "user9@example.com",
+        userRole: "manager",
+        activity: false
+    },
+    {
+        email: "user10@example.com",
+        userRole: "admin",
+        activity: true
+    }
+];
+
 export const UsersPage:FC =()=>{
     return(
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -16,20 +69,19 @@ export const UsersPage:FC =()=>{
                 </div>
             </div>
             <div className="overflow-x-auto">
-                <div className="grid grid-cols-[250px_100px_1fr_200px] text-xs text-gray-700  bg-gray-50 font-bold">
-                    <span className="px-4 py-3">UserName</span>
-                    <span className="px-4 py-3">UserRole</span>
-                    <span className="px-4 py-3">UserData</span>
+                <div className="grid grid-cols-[250px_150px_1fr_200px] text-xs text-gray-700  bg-gray-50 font-bold">
+                    <span className="px-4 py-3 text-center">UserName</span>
+                    <span className="px-4 py-3 text-center">UserRole</span>
+                    <span className="px-4 py-3 text-center">UserData</span>
                     <span className="px-4 py-3">UserActions</span>
                 </div>
-
-                        <UserPreview/>
-                        <UserPreview/>
-                        <UserPreview/>
-                        <UserPreview/>
-                        <UserPreview/>
-                        <UserPreview/>
-                        <UserPreview/>
+                    {users.map(user=>(
+                        <UserPreview
+                        email={user.email}
+                        activity={user.activity}
+                        userRole={user.userRole}/>
+                    ))}
+                       
 
             </div>
 
