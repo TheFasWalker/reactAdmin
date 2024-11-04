@@ -1,4 +1,5 @@
 import { WhiteButton } from "../ui/buttons/WhiteButton"
+import { UserRole } from "../ui/UserRole"
 
 export const Header = () => {
   return (
@@ -14,13 +15,18 @@ export const Header = () => {
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
           </a>
-          <div className="">
-          <WhiteButton
-            title={"LogOut"}
-            icon='exit'
-          />
+          <div className="flex flex-row gap-3">
+            <div className=" flex flex-col items-center">
+
+              <span>Email@email.email</span>
+              <UserRole role="admin" />
+            </div>
+            <WhiteButton
+              title={"LogOut"}
+              icon='exit'
+            />
           </div>
-          
+
 
         </div>
 
