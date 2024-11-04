@@ -8,7 +8,7 @@ import { Icons } from "../components/ui/other/Icons";
 import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
 import { SidebarLink } from "../components/ui/buttons/links/SlidebarLinks";
 import { WhiteButton } from "../components/ui/buttons/WhiteButton";
-import { InputField } from "../components/ui/form/InputField";
+import { InputField } from "../components/ui/form/formik/InputField";
 import { Form, Formik } from "formik";
 import { DropDownSection } from "../components/uiPage/DropDownSection";
 import { BackButton } from "../components/ui/buttons/BackButton";

@@ -4,7 +4,7 @@ import { Field, Form, Formik } from "formik";
 
 import { validateField } from "../heplers/formValidation";
 import { NavLink } from "react-router-dom";
-import { InputField } from "../components/ui/form/InputField";
+import { InputField } from "../components/ui/form/formik/InputField";
 import { Routes } from "../navigation/routes";
 
 export const LoginPage: FC = () => {
