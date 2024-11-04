@@ -48,6 +48,7 @@ export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDow
             <input type="text" name={name} value={selectedValue} readOnly hidden/>
             <button 
             onClick={()=>setDropDownState(!dropDownState)} 
+            type="button"
             className=" cursor-pointer p-2.5 flex items-center justify-center w-full">{buttonTitle}</button>
             {dropDownState && (
                 <div className=" absolute top-[90%] left-0 bg-white w-full flex flex-col border-gray-300 border-b border-r border-l rounded-br-lg rounded-bl-lg max-h-52 overflow-y-scroll">
@@ -56,7 +57,7 @@ export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDow
                             key={item.value}
                             title={item.title}
                             activity = {item.value == selectedValue}
-                            value={item.value}
+                            value={item.value}                           
                             onclick={()=>clickOnElem(item.value, item.title)}
                         />
                     ))}
@@ -75,6 +76,7 @@ const Button: FC<buttonInterfase> = ({ title, value,onclick,activity }) => {
             className={`w-full flex items-center justify-center p-2 text-sm text-gray-700 hover:bg-gray-100  ${activity ? ' hidden' : ''}`}
             onClick={onclick}
             data-value={value}
+            type="button"
         >{title}
         </button>
     )

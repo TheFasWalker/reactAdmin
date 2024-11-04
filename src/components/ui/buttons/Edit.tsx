@@ -7,6 +7,7 @@ export const Edit: FC<editButtonInterfase> = ({ onclick }) => {
         <button
             className="h-10 w-10 flex items-center justify-center bg-green-700 rounded-lg hover:bg-green-500 hover:shadow-sm"
             onClick={onclick}
+            type="button"
         >
 
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"

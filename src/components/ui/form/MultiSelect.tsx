@@ -93,6 +93,7 @@ const Button: FC<buttonInterface> = ({ title, value, onclick,activity }) => {
             onClick={onclick}
             className={` relative w-full flex items-center justify-center p-2 text-sm text-gray-700 hover:bg-gray-100  ${activity ?'bg-slate-200 border border-collapse border-gray-300 ' : ' ' }`}
             data-value={value}
+            type="button"
         >
             {activity && (
             <span className=" absolute top-0 right-0 text-[10px]">selected!</span>
@@ -107,6 +108,7 @@ const ShownElem: FC<{title: string, onclick: MouseEventHandler<HTMLButtonElement
         <span className=" flex flex-row items-center gap-1 p-1 border rounded-lg bg-slate-50">
             {title}
             <button
+            type="button"
                 onClick={onclick}>
                 <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6"></path></svg></button></span>
     )
