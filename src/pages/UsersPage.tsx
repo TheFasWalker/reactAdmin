@@ -6,52 +6,72 @@ const users = [
     {
         email: "user1@example.com",
         userRole: "admin",
-        activity: true
+        activity: true,
+        name: "John",
+        family: "Doe"
     },
     {
         email: "user2@example.com",
         userRole: "partner",
-        activity: false
+        activity: false,
+        name: "Jane",
+        family: "Smith"
     },
     {
         email: "user3@example.com",
         userRole: "manager",
-        activity: true
+        activity: true,
+        name: "Alice",
+        family: "Johnson"
     },
     {
         email: "user4@example.com",
         userRole: "admin",
-        activity: false
+        activity: false,
+        name: "Chris",
+        family: "Lee"
     },
     {
         email: "user5@example.com",
         userRole: "partner",
-        activity: true
+        activity: true,
+        name: "Michael",
+        family: "Brown"
     },
     {
         email: "user6@example.com",
         userRole: "manager",
-        activity: false
+        activity: false,
+        name: "Sarah",
+        family: "Davis"
     },
     {
         email: "user7@example.com",
         userRole: "admin",
-        activity: true
+        activity: true,
+        name: "David",
+        family: "Garcia"
     },
     {
         email: "user8@example.com",
         userRole: "partner",
-        activity: true
+        activity: true,
+        name: "Emma",
+        family: "Martinez"
     },
     {
         email: "user9@example.com",
         userRole: "manager",
-        activity: false
+        activity: false,
+        name: "Daniel",
+        family: "Rodriguez"
     },
     {
         email: "user10@example.com",
         userRole: "admin",
-        activity: true
+        activity: true,
+        name: "Olivia",
+        family: "Wilson"
     }
 ];
 
@@ -79,6 +99,8 @@ export const UsersPage:FC =()=>{
                         <UserPreview
                         email={user.email}
                         activity={user.activity}
+                        name={user.name}
+                        family = {user.family}
                         userRole={user.userRole}/>
                     ))}
                        
