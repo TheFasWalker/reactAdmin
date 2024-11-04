@@ -4,6 +4,7 @@ import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { PopUpWrapper } from "../components/general/PopUpWrapper";
 import { DropDownSelector } from "../components/ui/form/DropDownSelector";
 import { UserRolesData } from "../staticData/roles";
+import { InputField } from "../components/ui/form/InputField";
 
 const users = [
     {
@@ -88,18 +89,24 @@ export const UsersPage:FC =()=>{
                 <div className="flex flex-col gap-5">
                     <h1 className=" font-bold text-2xl">Создание пользователя</h1>
                     <form className="flex flex-col gap-3" action="#">
-                    <label>
-                        <span>Имя </span>
-                        <input type="text" value='' placeholder="UserName" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                    </label>
-                    <label>
-                        <span>Фамилия </span>
-                        <input type="text" value='' placeholder="UserFamily" name="family" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                    </label>
-                    <label>
-                        <span>Почта </span>
-                        <input type="text" value='' placeholder="UserEmail" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                    </label>
+                        <InputField 
+                            title={"Имя"} 
+                            name={"name"} 
+                            placeholder={"UserName"} 
+                            type="text"
+                        />
+                        <InputField 
+                            title={"Фамилия"} 
+                            name={"family"} 
+                            placeholder={"UserFamily"} 
+                            type="text"
+                        />
+                        <InputField 
+                            title={"Почта"} 
+                            name={"email"} 
+                            placeholder={"UserEmail"} 
+                            type="email"
+                        />
                         <DropDownSelector 
                             title="Роль"
                             name={"userRole"} 
