@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, MouseEventHandler, useEffect, useRef, useState } from "react";
 type data = {
     title: string,
     value: string
@@ -23,8 +23,6 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
         return selectedItems.some((elem) => elem.value === value);
     }
     const toggleElement = (value: string, title: string) => {
-        
-        console.log('asdfaa')
         if (!checkActiveElem(value,selectedItems)) {
             setSelectedItems((prev) => [...prev, { value: value, title: title }])
         }else{
@@ -39,18 +37,22 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
             setdropDownMenuState(false);
         }
     }
+    const deleteShownElement = (value: string, e: MouseEvent) => {
+        e.stopPropagation()
+            setSelectedItems((prev) => prev.filter(item => item.value !== value))
+
+    }
     useEffect(()=>{
         document.addEventListener('mousedown', missKlick);
         return () => {
             document.removeEventListener('mousedown', missKlick);
         };
     },[])
-    
 
 
     return (
         <div ref={dropDownRef}   className=" relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-           
+
            <div className=""  onClick={()=>setdropDownMenuState(!dropDownMenuState)}> {selectedItems.length === 0
                 ?
                 (<span  className="flex w-full h-full items-center justify-center"> multiselect</span>)
@@ -60,7 +62,7 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data }) => {
                         <ShownElem
                             key={item.value}
                             title={item.title}
-                            onclick={() => removeElement(item.value)}
+                            onclick={(e) => deleteShownElement(item.value, e)}
                         />
                     ))}
                 </div>)
@@ -98,7 +100,7 @@ const Button: FC<buttonInterface> = ({ title, value, onclick,activity }) => {
         </button>
     )
 }
-const ShownElem: FC<{ title: string, onclick?: () => void }> = ({ title, onclick }) => {
+const ShownElem: FC<{title: string, onclick: MouseEventHandler<HTMLButtonElement>}> = ({ title, onclick }) => {
     return (
         <span className=" flex flex-row items-center gap-1 p-1 border rounded-lg bg-slate-50">
             {title}
