@@ -25,7 +25,6 @@ export const PopUpWrapper: FC<popupInterface>=({state,close, children})=>{
         return(
             <div className=" absolute top-0 left-0 ring-0 bottom-0 bg-[#00000080] z-50 w-full h-full flex justify-center items-center">
                 <div ref={popupRef} className="bg-white rounded-md shadow-sm p-4 relative">
-                    <h1>Какой то заголовок</h1>
                     {children}
                     <button onClick={close} className=" absolute h-8 w-8 shadow bg-white flex justify-center items-center rounded-full -top-4 -right-4 hover:shadow-md">
                         <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

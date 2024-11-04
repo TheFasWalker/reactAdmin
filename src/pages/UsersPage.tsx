@@ -1,6 +1,9 @@
-import { FC } from "react";
-import { ButtonLink } from "../components/ui/buttons/links/ButtonLink";
+import { FC, useState } from "react";
 import { UserPreview } from "../components/users/UserPreview";
+import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
+import { PopUpWrapper } from "../components/general/PopUpWrapper";
+import { DropDownSelector } from "../components/ui/form/DropDownSelector";
+import { UserRolesData } from "../staticData/roles";
 
 const users = [
     {
@@ -76,8 +79,40 @@ const users = [
 ];
 
 export const UsersPage:FC =()=>{
+    const [creatingUserPopupState, setCreatingUserPopupState ] = useState(false)
     return(
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+            <PopUpWrapper 
+            state={creatingUserPopupState} 
+            close={()=>setCreatingUserPopupState(false)} >
+                <div className="flex flex-col gap-5">
+                    <h1 className=" font-bold text-2xl">Создание пользователя</h1>
+                    <form className="flex flex-col gap-3" action="#">
+                    <label>
+                        <span>Имя </span>
+                        <input type="text" value='' placeholder="UserName" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                    </label>
+                    <label>
+                        <span>Фамилия </span>
+                        <input type="text" value='' placeholder="UserFamily" name="family" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                    </label>
+                    <label>
+                        <span>Почта </span>
+                        <input type="text" value='' placeholder="UserEmail" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                    </label>
+                        <DropDownSelector 
+                            title="Роль"
+                            name={"userRole"} 
+                            data={UserRolesData}
+                        />
+                        <ButtonType1
+                        name="Создать пользователя" type="submit"/>
+                
+                    </form>
+                </div>
+
+                
+            </PopUpWrapper>
     <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
         <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -85,7 +120,7 @@ export const UsersPage:FC =()=>{
                     
                 </div>
                 <div className="w-fit  flex flex-col space-y-2  items-center justify-center">
-  <ButtonLink link={"#"} text={"Добавить пользователя"}  />
+                    <ButtonType1 onClick={()=>setCreatingUserPopupState(true)} name="Добавить пользователя"/>
                 </div>
             </div>
             <div className="overflow-x-auto">
