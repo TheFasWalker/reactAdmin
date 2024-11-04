@@ -6,7 +6,7 @@ export const Routes ={
     help:'help',
     posts:'posts',
     postCreate:'posts/create',
-    postShow:'posts/:id',
+    postShow:'/posts/:id',
     lessons:'lessons',
     users:'users',
     contacts:'contacts',
