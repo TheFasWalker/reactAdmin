@@ -5,6 +5,7 @@ import { Field, Form, Formik } from "formik";
 import { validateField } from "../heplers/formValidation";
 import { NavLink } from "react-router-dom";
 import { InputField } from "../components/ui/form/InputField";
+import { Routes } from "../navigation/routes";
 
 export const LoginPage: FC = () => {
     return (
@@ -13,7 +14,7 @@ export const LoginPage: FC = () => {
 
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <NavLink to={'admin/home'}> Логин мимо админки</NavLink>
+                        <NavLink to={Routes.home}> Логин мимо админки</NavLink>
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
                             Slam`s Adminка
                         </h1>

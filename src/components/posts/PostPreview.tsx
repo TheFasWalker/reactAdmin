@@ -3,6 +3,7 @@ import noImage from '../../assets/noimage.png'
 import { Trash } from "../ui/buttons/Trash"
 import { Edit } from "../ui/buttons/Edit"
 import { NavLink } from "react-router-dom"
+import { Routes } from "../../navigation/routes"
 interface PostPreview {
     img: string,
     description: string,
@@ -11,7 +12,7 @@ interface PostPreview {
 export const PostPreview: FC<PostPreview> = ({ img, description,postId }) => {
     return (
         <div className="flex flex-col p-5  rounded-lg gap-5 relative shadow bg-gray-200">
-            <NavLink to={`${postId}`} className=" flex items-center justify-center h-full ">
+            <NavLink to={Routes.postShow.replace(':id', postId)} className=" flex items-center justify-center h-full ">
                 {img && (
                     <img className="w-full h-full object-cover" src={img} alt="" />
                 )}

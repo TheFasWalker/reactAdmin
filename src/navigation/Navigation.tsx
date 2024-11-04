@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route,Routes} from "react-router-dom"
 import { LoginPage } from "../pages/LoginPage"
 import { AdminLayout } from "../components/layouts/Admin"
 import { HomePage } from "../pages/HomePage"
@@ -14,6 +14,7 @@ import { ContactsPage } from "../pages/ContactsPage"
 import { CreatePost } from "../pages/Posts/CreatePost"
 import { ShowPost } from "../pages/Posts/ShowPost"
 import { Error505 } from "../pages/Error505"
+import { Routes as AppRoutes } from "./routes"
 
 export const Navigation:FC =()=>{
     return(
@@ -21,20 +22,20 @@ export const Navigation:FC =()=>{
             <Routes>
                 <Route path="/" element={<LoginPage/>}/>
 
-                <Route path="admin" element={<AdminLayout/>}>
-                    <Route path="home" element={<HomePage/>} />
-                    <Route path="components" element ={<UiPage/>}/>
-                    <Route path="docs" element={<DocsPage/>}/>
-                    <Route path="help" element={<HelpPage/>}/>
-                    <Route path="posts" element={<PostsPage/>}/>
-                    <Route path="posts/:id" element={<ShowPost/>}/>
-                    <Route path="posts/create" element={<CreatePost/>}/>
-                    <Route path="lessons" element={<LessonsPage/>}/>
-                    <Route path="users" element={<UsersPage/>}/>
-                    <Route path="contacts" element={<ContactsPage/>}/>
+                <Route path="/" element={<AdminLayout/>}>
+                    <Route path={AppRoutes.home} element={<HomePage/>} />
+                    <Route path={AppRoutes.components} element ={<UiPage/>}/>
+                    <Route path={AppRoutes.docs} element={<DocsPage/>}/>
+                    <Route path={AppRoutes.help} element={<HelpPage/>}/>
+                    <Route path={AppRoutes.posts} element={<PostsPage/>}/>
+                    <Route path={AppRoutes.postShow} element={<ShowPost/>}/>
+                    <Route path={AppRoutes.postCreate} element={<CreatePost/>}/>
+                    <Route path={AppRoutes.lessons} element={<LessonsPage/>}/>
+                    <Route path={AppRoutes.users} element={<UsersPage/>}/>
+                    <Route path={AppRoutes.contacts} element={<ContactsPage/>}/>
                 </Route>
                 <Route path="/*" element={<Error404/>}/>
-                <Route path="/error-505" element={<Error505/>}/>
+                <Route path={AppRoutes.error505} element={<Error505/>}/>
             </Routes>
         </BrowserRouter>
     )
