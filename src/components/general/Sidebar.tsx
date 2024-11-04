@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom"
 import { SidebarLink } from "../ui/buttons/links/SlidebarLinks"
-import { Routes } from "../../navigation/routes"
 
 
 export const Sidebar = () => {
@@ -12,24 +11,24 @@ export const Sidebar = () => {
     >
       <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
 
-        <ul className="space-y-2">
+        <ul className="space-y-2 pt-3">
           <li>
-            <SidebarLink title={"Главная"} link={Routes.home} icon={"home"} />
+            <SidebarLink title={"Главная"} link={"/admin"} icon={"home"} />
           </li>
           <li>
-            <SidebarLink title={"Уроки"} link={Routes.lessons} icon={"lessons"} />
-          </li>
-          <li>
-            <SidebarLink
-              title="посты" link={Routes.posts} icon={"pages"}            />
+            <SidebarLink title={"Уроки"} link={"lessons"} icon={"lessons"} />
           </li>
           <li>
             <SidebarLink
-              title="Пользователи" link={Routes.users} icon={"users"}            />
+              title="посты" link={"posts"} icon={"pages"}            />
+          </li>
+          <li>
+            <SidebarLink
+              title="Пользователи" link={"users"} icon={"users"}            />
           </li>          
           <li>
             <SidebarLink
-              title="Контакты" link={Routes.contacts} icon={"contacts"}            />
+              title="Контакты" link={"contacts"} icon={"contacts"}            />
           </li>
         </ul>
         <ul
@@ -38,13 +37,13 @@ export const Sidebar = () => {
           <li>
             <SidebarLink
               title="Документы"
-              link={Routes.docs} 
+              link="/admin/docs" 
               icon='pages'/>
           </li>
            <li>
             <SidebarLink
               title="Компоненты"
-              link={Routes.components}
+              link="/admin/components"
               icon='help' />
           </li>
 
