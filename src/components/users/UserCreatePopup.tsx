@@ -5,27 +5,13 @@ import { ButtonType1 } from "../ui/buttons/SybmitButton";
 import { PopUpWrapper } from "../general/PopUpWrapper";
 import { UserRolesData } from "../../staticData/roles";
 import { PasswordInput } from "../ui/form/PasswordInput";
-import * as yup from 'yup'
 import { Form, Formik } from "formik";
+import { userValidation } from "../../heplers/validation";
 interface UserCreatePopupInterface {
     popupState:boolean,
     closePopup:()=>void
 }
 export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePopup})=>{
-    // const validationSchema = yup.object().shape({
-    //     name:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум').required('Обязательное поле'),
-    //     family:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум').required('Обязательное поле'), 
-    //     email:yup.string().typeError('Должно быть строкой').email('Не валидная почта').required('Обязательное поле'),
-    //     role:yup.string().required('Выберите роль'),
-    //      password:yup.string().typeError('Должно быть строкой').min(8,'минимум 8 знаков')
-    // })
-    const validationSchema = yup.object().shape({
-        name:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум'),
-        family:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум'), 
-        email:yup.string().typeError('Должно быть строкой').email('Не валидная почта'),
-        role:yup.string().typeError('Должно быть строкой'),
-        password:yup.string().typeError('Должно быть строкой').min(8,'минимум 8 знаков')
-    })
     return(
         <PopUpWrapper 
         state={popupState} 
@@ -42,7 +28,7 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                 }}
                 validateOnBlur
                 onSubmit={(values)=>console.log(values)}
-                validationSchema={validationSchema}
+                validationSchema={userValidation}
                 >
                         {({values,errors, touched, handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
                        <Form className="flex flex-col gap-3" >
