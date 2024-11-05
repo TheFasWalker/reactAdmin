@@ -9,6 +9,11 @@ interface DropDownSelectorInterface {
     title?: string,
     name: string
     data:Array<data>
+    onchange?:(e: React.ChangeEvent<HTMLInputElement>)=>void,
+    onblure?:(e: React.FocusEvent<HTMLInputElement>)=>void,
+    touched?:boolean,
+    error?:string,
+    value?:string
 }
 interface buttonInterfase {
     title: string,
@@ -20,15 +25,16 @@ interface buttonInterfase {
 
 
 
-export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDownButton', name,data }) => {
+export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDownButton', name,value='',data,onchange,onblure ,touched,error}) => {
     const [dropDownState, setDropDownState] = useState(false)
     const [buttonTitle, setButtonTitle] = useState(title)
-    const [selectedValue, setSelectedValue] = useState('')
+    const [selectedValue, setSelectedValue] = useState(value)
     const dropDownRef = useRef<HTMLDivElement>(null)
     const clickOnElem=(value:string,title:string)=>{
         setButtonTitle(title)
         setDropDownState(false)
         setSelectedValue(value)
+        onchange && onchange({ target: { name: name, value: value } })
     }
     const missKlick =(e:MouseEvent)=>{
         if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
@@ -45,11 +51,23 @@ export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDow
         <div className="box-border relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full "
             ref={dropDownRef}
         >
-            <input type="text" name={name} value={selectedValue} readOnly hidden/>
+            <input 
+            type="text" 
+            name={name} 
+            value={selectedValue} 
+            readOnly 
+            hidden
+            onChange={onchange} 
+            onBlur={onblure}
+            />
+            
             <button 
             onClick={()=>setDropDownState(!dropDownState)} 
             type="button"
-            className=" cursor-pointer p-2.5 flex items-center justify-center w-full">{buttonTitle}</button>
+            className={`cursor-pointer p-2.5 flex items-center justify-center w-full rounded-lg ${touched && error && ('border-2 border-red-700 relative')} `}>
+                {buttonTitle} 
+                {touched && error && (<span className=" text-red-700 font-bold absolute top-1 right-1">{error}</span>)}
+            </button>
             {dropDownState && (
                 <div className=" absolute top-[90%] left-0 bg-white w-full flex flex-col border-gray-300 border-b border-r border-l rounded-br-lg rounded-bl-lg max-h-52 overflow-y-scroll">
                     {data.map(item=>(
