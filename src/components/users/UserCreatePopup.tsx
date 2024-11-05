@@ -16,13 +16,15 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
     //     name:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум').required('Обязательное поле'),
     //     family:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум').required('Обязательное поле'), 
     //     email:yup.string().typeError('Должно быть строкой').email('Не валидная почта').required('Обязательное поле'),
-    //     role:yup.string().required('Выберите роль')
+    //     role:yup.string().required('Выберите роль'),
+    //      password:yup.string().typeError('Должно быть строкой').min(8,'минимум 8 знаков')
     // })
     const validationSchema = yup.object().shape({
         name:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум'),
         family:yup.string().typeError('Должно быть строкой').min(3, '3 знака минимум'), 
         email:yup.string().typeError('Должно быть строкой').email('Не валидная почта'),
-        role:yup.string().typeError('Должно быть строкой')
+        role:yup.string().typeError('Должно быть строкой'),
+        password:yup.string().typeError('Должно быть строкой').min(8,'минимум 8 знаков')
     })
     return(
         <PopUpWrapper 
@@ -77,6 +79,15 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                                 touched={touched.email}
                                 error={errors.email}
                             />
+                            <PasswordInput
+                                name={"password"}
+                                value={values.password}
+                                onblure={handleBlur}
+                                onchange={handleChange}
+                                touched={touched.password}
+                                error={errors.password}
+                            />
+
                             <DropDownSelector 
                                 title="Роль"
                                 name={"role"} 

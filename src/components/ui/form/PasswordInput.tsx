@@ -1,18 +1,40 @@
 import { FC, useState } from "react";
 import { Icons } from "../other/Icons";
 import { passwordGenerator } from "../../../functions/passwordGenerator";
+interface PasswordInputInterface{
+    name:string,
+    touched?:boolean,
+    error?:string,
+    value?:string,
+    onchange?:(e: React.ChangeEvent<HTMLInputElement>)=>void,
+    onblure?:(e: React.FocusEvent<HTMLInputElement>)=>void,
+}
+export const PasswordInput: FC<PasswordInputInterface> = ({name,touched,error,value,onchange,onblure}) => {
 
-export const PasswordInput: FC = () => {
     const [popoverState, setPopoverState] = useState(false)
-    const generatePasswort=()=>{
-        console.log(passwordGenerator())
+
+    const generatePassword=()=>{
+        let generatedPassword = passwordGenerator()
+        onchange && onchange({ target: { name: name, value: generatedPassword } });
     }
+
 
     return (
         <label className=" ">
-            <span>пароль </span>
+             <span className={`${touched && error && ('flex w-full justify-between')}`}>
+            <span>Пароль </span>
+            {touched && error && <p className="text-red-500">{error}</p>}
+            </span>
             <div className="relative ">
-                <input type="text" value='' placeholder='Пароль' name='password' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                <input 
+                    type="text" 
+                    value={value || ''} 
+                    placeholder='Пароль' 
+                    name={name} 
+                    onBlur={onblure}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                    onChange={onchange}
+                    />
                 <div className="absolute top-0 right-0 bottom-0 z-[22222] w-11">
                     <div className="w-full h-full">
                     <div className={`${popoverState ?'opacity-1 block':'opacity-0 hidden'} absolute z-10 bottom-full block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm `}>
@@ -28,7 +50,7 @@ export const PasswordInput: FC = () => {
                     </div>
                     <button
                         type="button"
-                        onClick={()=>generatePasswort()}
+                        onClick={()=>generatePassword()}
                         onMouseEnter={() => setPopoverState(true)}
                         onMouseLeave={() => setPopoverState(false)}
                         className="h-full w-full  flex items-center justify-center rounded-br-lg rounded-tr-lg hover:bg-slate-300" 
