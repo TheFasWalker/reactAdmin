@@ -6,14 +6,15 @@ import { PopUpWrapper } from "../general/PopUpWrapper";
 import { UserRolesData } from "../../staticData/roles";
 import { PasswordInput } from "../ui/form/PasswordInput";
 import * as yup from 'yup'
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 interface UserCreatePopupInterface {
     popupState:boolean,
     closePopup:()=>void
 }
 export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePopup})=>{
     const validationSchema = yup.object().shape({
-        name:yup.string().typeError('Должно быть строкой').required('Обязательное поле').length(3, '3 знака минимум')
+        name:yup.string().typeError('Должно быть строкой').required('Обязательное поле').min(3, '3 знака минимум'),
+        family:yup.string().typeError('Должно быть строкой').required('Обязательное поле').min(3, '3 знака минимум'), 
     })
 
     return(
@@ -35,7 +36,7 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                 validationSchema={validationSchema}
                 >
                         {({values,errors, touched, handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
-                       <form className="flex flex-col gap-3" >
+                       <Form className="flex flex-col gap-3" >
                             <InputField 
                                 title={"Имя"} 
                                 name={"name"} 
@@ -46,30 +47,41 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                                 value={values.name}
                                 touched={touched.name}
                                 error={errors.name}
-
+                            />
+                            <InputField 
+                                title={"Фамилия"} 
+                                name={"family"} 
+                                placeholder={"UserFamily"} 
+                                type="text"
+                                onblure={handleBlur}
+                                onchange={handleChange}
+                                value={values.family}
+                                touched={touched.family}
+                                error={errors.family}
+                            />
+                             <InputField 
+                                title={"Почта"} 
+                                name={"email"} 
+                                placeholder={"UserEmail"} 
+                                type="email"
+                                onblure={handleBlur}
+                                onchange={handleChange}
+                                value={values.family}
+                                touched={touched.family}
+                                error={errors.family}
                             />
                             <ButtonType1
                                 name="Создать пользователя" 
                                 type="submit"
                             />
                             
-                        </form>
+                        </Form>
 
                         )}
                 </Formik>
                 {/* <form className="flex flex-col gap-3" action="#">
-                    <InputField 
-                        title={"Имя"} 
-                        name={"name"} 
-                        placeholder={"UserName"} 
-                        type="text"
-                    />
-                    <InputField 
-                        title={"Фамилия"} 
-                        name={"family"} 
-                        placeholder={"UserFamily"} 
-                        type="text"
-                    />
+
+
                     <InputField 
                         title={"Почта"} 
                         name={"email"} 
