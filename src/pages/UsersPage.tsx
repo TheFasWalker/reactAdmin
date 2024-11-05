@@ -103,6 +103,7 @@ export const UsersPage: FC = () => {
                         </div>
                         {users.map(user => (
                             <UserPreview
+                                key={user.email}
                                 email={user.email}
                                 activity={user.activity}
                                 name={user.name}
