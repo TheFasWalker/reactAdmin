@@ -15,6 +15,7 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
     const validationSchema = yup.object().shape({
         name:yup.string().typeError('Должно быть строкой').required('Обязательное поле').min(3, '3 знака минимум'),
         family:yup.string().typeError('Должно быть строкой').required('Обязательное поле').min(3, '3 знака минимум'), 
+        email:yup.string().typeError('Должно быть строкой').required('Обязательное поле').email('Не валидная почта')
     })
 
     return(
@@ -66,9 +67,9 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                                 type="email"
                                 onblure={handleBlur}
                                 onchange={handleChange}
-                                value={values.family}
-                                touched={touched.family}
-                                error={errors.family}
+                                value={values.email}
+                                touched={touched.email}
+                                error={errors.email}
                             />
                             <ButtonType1
                                 name="Создать пользователя" 
