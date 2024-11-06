@@ -7,6 +7,7 @@ import { UserRolesData } from "../../staticData/roles";
 import { PasswordInput } from "../ui/form/PasswordInput";
 import { Form, Formik } from "formik";
 import { userValidation } from "../../heplers/validation";
+import { sha512 } from "js-sha512";
 interface UserCreatePopupInterface {
     popupState:boolean,
     closePopup:()=>void
@@ -27,7 +28,10 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                     role:''
                 }}
                 validateOnBlur
-                onSubmit={(values)=>console.log(values)}
+                onSubmit={(values)=>{
+                    values.password = sha512(values.password)
+                    console.log(values)
+                }}
                 validationSchema={userValidation}
                 >
                         {({values,errors, touched, handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
