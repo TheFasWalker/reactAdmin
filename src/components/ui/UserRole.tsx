@@ -1,11 +1,10 @@
 import { FC } from "react";
-interface UserRoleInterface {
-    role: 'RootAdmin' | 'Content manager' | 'partner'
-}
+import { userRole } from "../../models/userRoles";
 
 
 
-export const UserRole: FC<UserRoleInterface> = ({ role }) => {
+
+export const UserRole: FC<userRole> = ({ role }) => {
     switch (role) {
         case ('RootAdmin'):
             return (

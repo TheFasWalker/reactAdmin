@@ -2,12 +2,13 @@ import { FC } from "react";
 import { Edit } from "../ui/buttons/Edit";
 import { Trash } from "../ui/buttons/Trash";
 import { UserRole } from "../ui/UserRole";
+import { userRole } from "../../models/userRoles";
 interface UserPreviewInterface{
     email:string,
     activity:boolean,
     name?:string,
     family?:string,
-    userRole:'admin' | 'manager' | 'partner'
+    userRole:userRole['role']
 }
 export const UserPreview: FC<UserPreviewInterface> = ({email,activity,userRole,name,family}) => {
     return (

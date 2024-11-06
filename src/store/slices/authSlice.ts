@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { userRole } from "../../models/userRoles";
 
 interface authInterface{
     token:string,
     isLoading:boolean,
     error:string,
     email:string,
-    role:'Content manager' | 'RootAdmin' | 'partner'
+    role:userRole['role']
 }
 interface authSuccessInterface{
     token:string

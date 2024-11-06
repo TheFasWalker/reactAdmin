@@ -7,7 +7,7 @@ import { UserCreatePopup } from "../components/users/UserCreatePopup";
 const users = [
     {
         email: "user1@example.com",
-        userRole: "admin",
+        userRole: "RootAdmin",
         activity: true,
         name: "John",
         family: "Doe"
@@ -21,14 +21,14 @@ const users = [
     },
     {
         email: "user3@example.com",
-        userRole: "manager",
+        userRole: "Content manager",
         activity: true,
         name: "Alice",
         family: "Johnson"
     },
     {
         email: "user4@example.com",
-        userRole: "admin",
+        userRole: "RootAdmin",
         activity: false,
         name: "Chris",
         family: "Lee"
@@ -42,14 +42,14 @@ const users = [
     },
     {
         email: "user6@example.com",
-        userRole: "manager",
+        userRole: "Content manager",
         activity: false,
         name: "Sarah",
         family: "Davis"
     },
     {
         email: "user7@example.com",
-        userRole: "admin",
+        userRole: "RootAdmin",
         activity: true,
         name: "David",
         family: "Garcia"
@@ -63,14 +63,14 @@ const users = [
     },
     {
         email: "user9@example.com",
-        userRole: "manager",
+        userRole: "Content manager",
         activity: false,
         name: "Daniel",
         family: "Rodriguez"
     },
     {
         email: "user10@example.com",
-        userRole: "admin",
+        userRole: "RootAdmin",
         activity: true,
         name: "Olivia",
         family: "Wilson"
