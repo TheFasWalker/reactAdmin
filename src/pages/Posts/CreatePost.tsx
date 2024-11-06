@@ -15,11 +15,6 @@ export const CreatePost:FC=()=>{
         setContent(content: string): void; 
        
       }
-    const [content, setContent] = useState('');
-
-    const handleEditorChange = (content:string, editor: TinyMCEEditorInterface) => {
-        setContent(content);
-    };
     return(
         <div className="">
             <CreateEditHeader
@@ -28,13 +23,13 @@ export const CreatePost:FC=()=>{
 
 <Formik
 initialValues={{
-    description:'',
+    description:'<p>Текст Статьи</p>',
     publishing:false
 }}
 onSubmit={(values)=>{
     console.log(values)
 }}>
-    {({values,errors,touched,handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
+    {({values,handleChange,handleBlur,handleSubmit})=>(
     
 
     <Form>
@@ -50,22 +45,24 @@ onSubmit={(values)=>{
                 <ButtonType1 name='Сохранить'  type="submit"   />
                 <WhiteButton title="Отмена" type="button"/>
             </div>
+            <Editor
+                apiKey={editorApiKey}
+                value={values.description}
+                textareaName="description"
+                init={{
+                    height: 500,
+                    menubar: false,
+                }}
+                onEditorChange={(content) => {
+                    handleChange({ target: { name: 'description', value: content } });
+                }}
+            />
     </Form>
     )}
 
 </Formik>
 
-        {/* <Editor
-            apiKey={editorApiKey}
-                initialValue="<p>Начните писать здесь...</p>"
-                textareaName="description"
-                init={{
-                    height: 500,
-                    menubar: false,
-
-                }}
-                onEditorChange={handleEditorChange}
-            />
+        {/* 
             <div className="pt-4">
                 <MultiFileInput
                 title="Добавить фото"
