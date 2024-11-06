@@ -53,9 +53,9 @@ export const ShowPost: FC = () => {
                             onSlideChange={() => console.log('slide change')}
                             onSwiper={(swiper) => console.log(swiper)}
                             pagination={{ clickable: true }}>
-                            {postData.images.map(image => (
-                                <SwiperSlide>
-                                    <div className="w-full h-full flex justify-center items-center">
+                            {postData.images.map((image,index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="w-full h-full flex justify-center items-center " >
                                     <img className="" src={image} alt="" />
                                     </div>
                                     </SwiperSlide>
@@ -76,8 +76,8 @@ export const ShowPost: FC = () => {
                 )}
                 {postData.images.length < 3 && postData.images.length != 0 && (
                     <div className="w-full flex flex-col gap-2">
-                        {postData.images.map(image => (
-                            <img src={image} alt="" />
+                        {postData.images.map((image,index) => (
+                            <img key={index} src={image} alt="" />
                         ))}
 
                     </div>
