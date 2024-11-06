@@ -16,7 +16,7 @@ export const LoginPage: FC = () => {
     }
 
     const validationSchema = yup.object().shape({
-        email:yup.string().email('Некорректный email').required('Обязательное поле'),
+        login:yup.string().required('Обязательное поле').min(4,'Короткий логин'),
         password:yup.string().required('Обязательное поле')
     })
     const navigate = useNavigate()
@@ -31,14 +31,14 @@ export const LoginPage: FC = () => {
                         </h1>
                         <Formik
                             initialValues={{
-                                email: `${login ? login : ''}` ,
-                                password: `${password ? password : ''}` 
+                                login: `${login}` ,
+                                password: `${password}` 
                             }}
                             validateOnBlur
 
                             onSubmit={(values) => {
                                 // values.password = sha512(values.password)
-        
+                                console.log(values)
                                 navigate(Routes.home)
 
                             }}
@@ -47,12 +47,12 @@ export const LoginPage: FC = () => {
                             {({ errors, touched }) => (
                                 <Form className=" flex flex-col gap-4">
                                     <InputField
-                                        title='email'
-                                        name="email"
-                                        type='email'
+                                        title='login'
+                                        name="login"
+                                        type='text'
                                         placeholder='Почта'
-                                        error={errors.email}
-                                        touched={touched.email} />
+                                        error={errors.login}
+                                        touched={touched.login} />
                                     <InputField
                                         title='password'
                                         name="password"
