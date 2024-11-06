@@ -304,6 +304,16 @@ export const UiPage: FC = () => {
                             <Icons
                                 id="left" />
                             <span>left</span>
+                        </div>                  
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="generate" />
+                            <span>generate</span>
+                        </div>                        
+                        <div className="flex flex-col items-center">
+                            <Icons
+                                id="search" />
+                            <span>search</span>
                         </div>
                     </div>
                 </div>

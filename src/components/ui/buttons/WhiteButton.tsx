@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { Icons } from "../other/Icons";
+import { spriteInterface } from "../../../models/sptite";
 interface WhiteButtonInterfase {
     title: string,
     onclick?: () => void,
     type?: "button" | 'submit'
-    icon?: 'users' | 'pages' | 'info' | 'help' | 'lessons' | 'contacts' | 'home' | 'exit'
+    icon?:spriteInterface['id']
 
 }
 export const WhiteButton: FC<WhiteButtonInterfase> = ({ title, onclick, type = "button", icon }) => {
