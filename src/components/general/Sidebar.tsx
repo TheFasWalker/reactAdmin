@@ -46,7 +46,14 @@ export const Sidebar = () => {
               title="Компоненты"
               link={Routes.components}
               icon='help' />
+          </li>           
+          <li>
+            <SidebarLink
+              title="Библиотека flowbite"
+              link='https://flowbite.com' icon="generate" 
+              target="_blank"             />
           </li>
+
 
 
         </ul>

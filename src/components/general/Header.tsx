@@ -7,14 +7,9 @@ export const Header = () => {
       <div className="flex flex-wrap justify-between items-center">
         <div className="flex justify-between items-center w-full">
 
-          <a href="https://flowbite.com" className="flex items-center justify-between mr-4">
-            <img
-              src="https://flowbite.s3.amazonaws.com/logo.svg"
-              className="mr-3 h-8"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-          </a>
+
+          <span className="text-3xl font-extrabold leading-none tracking-tight text-gray-900">Bim-Bim admin
+          </span>
           <div className="flex flex-row gap-3">
             <div className=" flex flex-col items-center">
 
