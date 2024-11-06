@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 interface TosteInterface{
     visibility:boolean,
     result:'success' | 'alert' | 'fail'
@@ -6,6 +6,7 @@ interface TosteInterface{
     message?:string
 }
 export const Toste:FC<TosteInterface>=({visibility,result,close,message})=>{
+    const [opacity, setOpacity] = useState(0);
     let resultColor =''
     switch (result){
         case "success":
@@ -17,10 +18,20 @@ export const Toste:FC<TosteInterface>=({visibility,result,close,message})=>{
         case "alert" :
             resultColor = `text-orange-500 bg-orange-100`
     }
-    
+    useEffect(() => {
+        if (visibility) {
+          let interval = setInterval(() => {
+            setOpacity(prev => prev + 0.05);
+            if (opacity >= 1) {
+              clearInterval(interval);
+            }
+          }, 70);
+          return () => clearInterval(interval); // Очистка интервала при исчезновении
+        }
+      }, [visibility]);
     if(visibility){
         return(
-            <div className={`grid grid-cols-[32px_1fr_32px] gap-2 items-center w-full max-w-xs p-4 mb-4 text-gray-500  rounded-lg shadow fixed bottom-5 right-0 ${result === 'fail' ? 'bg-red-300' : 'bg-white'}`} >
+            <div style={{ opacity }} className={`grid grid-cols-[32px_1fr_32px] gap-2 items-center w-full max-w-xs p-4 mb-4 text-gray-500  rounded-lg shadow fixed bottom-5 right-0 ${result === 'fail' ? 'bg-red-300' : 'bg-white'}`} >
                 <div className={`inline-flex items-center justify-center flex-shrink-0 w-8 h-8  rounded-lg
                     ${resultColor} `}>
                    
