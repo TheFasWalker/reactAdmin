@@ -6,6 +6,7 @@ import { ButtonType1 } from "../../components/ui/buttons/SybmitButton";
 import { WhiteButton } from "../../components/ui/buttons/WhiteButton";
 import { ButtonLink } from "../../components/ui/buttons/links/ButtonLink";
 import { Toggler } from "../../components/ui/form/Toggler";
+import { Form, Formik } from "formik";
 
 export const CreatePost:FC=()=>{
     const editorApiKey = import.meta.env.VITE_EDITOR_API_KEY
@@ -25,9 +26,36 @@ export const CreatePost:FC=()=>{
             title="Создание поста"/>
 
 
+<Formik
+initialValues={{
+    description:'',
+    publishing:false
+}}
+onSubmit={(values)=>{
+    console.log(values)
+}}>
+    {({values,errors,touched,handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
+    
 
+    <Form>
+    <div className="py-4">
+                <Toggler 
+                checked={values.publishing}
+                title={"Статус публикации"} 
+                name={"publishing"}
+                onchange={handleChange}
+                onblure={handleBlur}/>
+            </div>
+    <div className="grid grid-cols-2 gap-2 mt-4">
+                <ButtonType1 name='Сохранить'  type="submit"   />
+                <WhiteButton title="Отмена" type="button"/>
+            </div>
+    </Form>
+    )}
 
-        <Editor
+</Formik>
+
+        {/* <Editor
             apiKey={editorApiKey}
                 initialValue="<p>Начните писать здесь...</p>"
                 textareaName="description"
@@ -37,7 +65,6 @@ export const CreatePost:FC=()=>{
 
                 }}
                 onEditorChange={handleEditorChange}
-
             />
             <div className="pt-4">
                 <MultiFileInput
@@ -51,7 +78,7 @@ export const CreatePost:FC=()=>{
             <div className="grid grid-cols-2 gap-2 mt-4">
                 <ButtonType1 name='Сохранить'     />
                 <WhiteButton title="Отмена"/>
-            </div>
+            </div> */}
         </div>
     )
 }
