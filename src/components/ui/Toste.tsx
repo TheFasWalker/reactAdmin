@@ -20,7 +20,7 @@ export const Toste:FC<TosteInterface>=({visibility,result,close,message})=>{
     
     if(visibility){
         return(
-            <div className="grid grid-cols-[32px_1fr_32px] gap-2 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow fixed bottom-5 right-0  " role="alert">
+            <div className={`grid grid-cols-[32px_1fr_32px] gap-2 items-center w-full max-w-xs p-4 mb-4 text-gray-500  rounded-lg shadow fixed bottom-5 right-0 ${result === 'fail' ? 'bg-red-300' : 'bg-white'}`} >
                 <div className={`inline-flex items-center justify-center flex-shrink-0 w-8 h-8  rounded-lg
                     ${resultColor} `}>
                    
@@ -41,7 +41,7 @@ export const Toste:FC<TosteInterface>=({visibility,result,close,message})=>{
                         )}
     
                 </div>
-                <div className="ms-3 text-sm font-normal w-fit">{message}</div>
+                <div className="ms-3 text-sm  w-fit text-black font-bold">{message}</div>
                 <button 
                 type="button" 
                 onClick={close}

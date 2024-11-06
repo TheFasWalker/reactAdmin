@@ -6,6 +6,12 @@ import { InputField } from "../components/ui/form/formik/InputField";
 import { Routes } from "../navigation/routes";
 import * as yup from 'yup';
 import { sha512 } from "js-sha512";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { autorisation } from "../store/actions/authAction";
+import { Loader } from "../components/general/Loader";
+import { Toste } from "../components/ui/Toste";
+import { authSlice } from "../store/slices/authSlice";
+import { errorMessage } from "../helpers/errors";
 
 export const LoginPage: FC = () => {
     let login = import.meta.env.VITE_ROOT_ADMIN_LOGIN
@@ -19,9 +25,27 @@ export const LoginPage: FC = () => {
         login:yup.string().required('Обязательное поле').min(4,'Короткий логин'),
         password:yup.string().required('Обязательное поле')
     })
+    const {token,isLoading,error} = useAppSelector((state)=>state.authReduser)
+
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
+
+    const logger = async  (login:string,password:string)=>{
+        await dispatch(autorisation(login, password))
+        // navigate(Routes.home)
+        console.log(token)
+    }
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
+            <Loader
+            loadingState={isLoading}/>
+
+            <Toste
+                close={()=>dispatch(authSlice.actions.authCleanError())}
+                message={errorMessage(error)}
+                visibility={Boolean(error)} 
+                result={"fail"}
+                />
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -39,7 +63,8 @@ export const LoginPage: FC = () => {
                             onSubmit={(values) => {
                                 // values.password = sha512(values.password)
                                 console.log(values)
-                                navigate(Routes.home)
+                                logger(values.login, values.password)
+                                
 
                             }}
                             validationSchema={validationSchema}
