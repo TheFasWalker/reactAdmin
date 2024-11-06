@@ -29,7 +29,7 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                     login:''
                 }}
                 validateOnBlur
-                onSubmit={(values)=>{
+                onSubmit={(values)=>{            
                     values.password = sha512(values.password)
                     console.log(values)
                 }}
@@ -44,9 +44,9 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                                 type="text"
                                 onblure={handleBlur}
                                 onchange={handleChange}
-                                value={values.name}
-                                touched={touched.name}
-                                error={errors.name}
+                                value={values.login}
+                                touched={touched.login}
+                                error={errors.login}
                             />
                             <InputField 
                                 title={"Имя"} 
@@ -113,7 +113,6 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
 
             
         </PopUpWrapper>
-
 
     )
 }
