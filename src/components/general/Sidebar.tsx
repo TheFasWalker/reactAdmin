@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { SidebarLink } from "../ui/buttons/links/SlidebarLinks"
 import { Routes } from "../../navigation/routes"
+import { useAppSelector } from "../../hooks/redux"
 
 
 export const Sidebar = () => {
+  const {role} = useAppSelector(state=>state.authReduser)
   return (
     <aside
       className="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
@@ -23,10 +25,13 @@ export const Sidebar = () => {
             <SidebarLink
               title="посты" link={Routes.posts} icon={"pages"}            />
           </li>
-          <li>
-            <SidebarLink
-              title="Пользователи" link={Routes.users} icon={"users"}            />
-          </li>          
+          {role == 'RootAdmin' && 
+            <li>
+              <SidebarLink
+                title="Пользователи" link={Routes.users} icon={"users"}            />
+            </li>  
+          }
+                  
           <li>
             <SidebarLink
               title="Контакты" link={Routes.contacts} icon={"contacts"}            />
@@ -41,18 +46,22 @@ export const Sidebar = () => {
               link={Routes.docs} 
               icon='pages'/>
           </li>
-           <li>
-            <SidebarLink
-              title="Компоненты"
-              link={Routes.components}
-              icon='help' />
-          </li>           
-          <li>
-            <SidebarLink
-              title="Библиотека flowbite"
-              link='https://flowbite.com' icon="generate" 
-              target="_blank"             />
-          </li>
+          { role == 'RootAdmin' && (
+          <>
+            <li>
+              <SidebarLink
+                title="Компоненты"
+                link={Routes.components}
+                icon='help' />
+            </li>           
+            <li>
+              <SidebarLink
+                title="Библиотека flowbite"
+                link='https://flowbite.com' icon="generate" 
+                target="_blank"             />
+            </li>
+          </>)}
+           
 
 
 

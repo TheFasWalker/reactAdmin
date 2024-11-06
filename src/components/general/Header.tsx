@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useAppDispatch } from "../../hooks/redux"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { authSlice } from "../../store/slices/authSlice"
 import { WhiteButton } from "../ui/buttons/WhiteButton"
 import { UserRole } from "../ui/UserRole"
@@ -8,7 +8,7 @@ import { Routes } from "../../navigation/routes"
 export const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-
+  const {role,email}=useAppSelector((state)=>state.authReduser)
   const exit =()=>{
     dispatch(authSlice.actions.authLogOut())
     navigate(Routes.login)
@@ -25,8 +25,8 @@ export const Header = () => {
           <div className="flex flex-row gap-3">
             <div className=" flex flex-col items-center">
 
-              <span>Email@email.email</span>
-              <UserRole role="admin" />
+              <span>{email}</span>
+              <UserRole role={role} />
             </div>
             <WhiteButton
               title={"LogOut"}

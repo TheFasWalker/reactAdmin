@@ -1,17 +1,17 @@
 import { FC } from "react";
 interface UserRoleInterface {
-    role: 'admin' | 'manager' | 'partner'
+    role: 'RootAdmin' | 'Content manager' | 'partner'
 }
 
 
 
 export const UserRole: FC<UserRoleInterface> = ({ role }) => {
     switch (role) {
-        case ('admin'):
+        case ('RootAdmin'):
             return (
                     <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded  border border-red-400">Админ</span> 
             )
-        case ('manager'):
+        case ('Content manager'):
             return (
                     <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded border border-green-400">Контент&nbsp;менеджер</span>
             )

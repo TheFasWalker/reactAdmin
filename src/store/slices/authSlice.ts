@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface authInterface{
     token:string,
     isLoading:boolean,
-    error:string
+    error:string,
+    email:string,
+    role:'Content manager' | 'RootAdmin' | 'partner'
 }
 interface authSuccessInterface{
     token:string
@@ -12,7 +14,9 @@ interface authSuccessInterface{
 const initialState:authInterface ={
     token:'',
     isLoading:false,
-    error:''
+    error:'',
+    email:'admin@admin.admins',
+    role:'RootAdmin',
 }
 
 
