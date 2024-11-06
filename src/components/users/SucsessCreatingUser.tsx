@@ -6,11 +6,12 @@ interface SucsessCreatingUserInterface{
     name:string,
     family:string,
     email:string,
-    password:string
+    password:string,
+    login:string,
     close:()=>void
 }
 
-export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({visibility,name,family,email,password,close})=>{
+export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({login,visibility,name,family,email,password,close})=>{
     if(visibility){
         return(
             <div className="fixed top-0 bottom-0 right-0 left-0 z-50 bg-[#00000080] flex items-center justify-center">
@@ -18,6 +19,7 @@ export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({visibility,n
                     <h1 className="text-center font-bold text-xl">Попап закрывается только по клику на кнопку</h1>
                     <span className=" text-center">Данные пользователя</span>
                     <div className=" flex flex-col gap-2 text-base ">
+                        <span>Логин:{login}</span>
                             <span>Имя : {name}</span>
                             <span>Фамилия : {family}</span>
                             <span>Email : {email}</span>
