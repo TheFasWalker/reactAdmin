@@ -6,7 +6,7 @@ import { PopUpWrapper } from "../general/PopUpWrapper";
 import { UserRolesData } from "../../staticData/roles";
 import { PasswordInput } from "../ui/form/PasswordInput";
 import { Form, Formik } from "formik";
-import { userValidation } from "../../heplers/validation";
+import { userCreatingValidation } from "../../heplers/validation";
 import { sha512 } from "js-sha512";
 interface UserCreatePopupInterface {
     popupState:boolean,
@@ -25,17 +25,29 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                     family:'',
                     email:'',
                     password:'',
-                    role:''
+                    role:'',
+                    login:''
                 }}
                 validateOnBlur
                 onSubmit={(values)=>{
                     values.password = sha512(values.password)
                     console.log(values)
                 }}
-                validationSchema={userValidation}
+                validationSchema={userCreatingValidation}
                 >
                         {({values,errors, touched, handleChange,handleBlur,isValid,handleSubmit,dirty})=>(
                        <Form className="flex flex-col gap-3" >
+                        <InputField 
+                                title={"Логин"} 
+                                name={"login"} 
+                                placeholder={"UserName"} 
+                                type="text"
+                                onblure={handleBlur}
+                                onchange={handleChange}
+                                value={values.name}
+                                touched={touched.name}
+                                error={errors.name}
+                            />
                             <InputField 
                                 title={"Имя"} 
                                 name={"name"} 
@@ -97,25 +109,6 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
 
                         )}
                 </Formik>
-                {/* <form className="flex flex-col gap-3" action="#">
-
-
-                    <InputField 
-                        title={"Почта"} 
-                        name={"email"} 
-                        placeholder={"UserEmail"} 
-                        type="email"
-                    />
-                    <PasswordInput/>
-                    <DropDownSelector 
-                        title="Роль"
-                        name={"userRole"} 
-                        data={UserRolesData}
-                    />
-                    <ButtonType1
-                    name="Создать пользователя" type="submit"/>
-            
-                </form> */}
             </div>
 
             
