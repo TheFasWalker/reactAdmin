@@ -3,7 +3,16 @@ export interface userRole{
 }
 
 export const AccessGroup ={
-    admin:'RootAdmin',
-    content:'Content manager',
-    partner:'partner'
+    admin:{
+        title:'Администратор',
+        value:'RootAdmin'
+    },
+    manager:{
+        title:'Контент менеджер',
+        value:'Content manager'
+    },
+    partner:{
+        title:'Партнёр',
+        value:'partner'
+    }
 }

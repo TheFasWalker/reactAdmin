@@ -26,7 +26,7 @@ export const Sidebar = () => {
             <SidebarLink
               title="посты" link={Routes.posts} icon={"pages"}            />
           </li>
-          {role == AccessGroup.admin && 
+          {role == AccessGroup.admin.value && 
             <li>
               <SidebarLink
                 title="Пользователи" link={Routes.users} icon={"users"}            />
@@ -47,7 +47,7 @@ export const Sidebar = () => {
               link={Routes.docs} 
               icon='pages'/>
           </li>
-          { role == AccessGroup.admin && (
+          { role == AccessGroup.admin.value && (
           <>
             <li>
               <SidebarLink
