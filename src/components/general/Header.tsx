@@ -8,6 +8,7 @@ import { Routes } from "../../navigation/routes"
 export const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const appTitle = import.meta.env.VITE_APP_TITLE
   const {role,email}=useAppSelector((state)=>state.authReduser)
   const exit =()=>{
     dispatch(authSlice.actions.authLogOut())
@@ -20,7 +21,8 @@ export const Header = () => {
         <div className="flex justify-between items-center w-full">
 
 
-          <span className="text-3xl font-extrabold leading-none tracking-tight text-gray-900">Bim-Bim admin
+          <span className="text-3xl font-extrabold leading-none tracking-tight text-gray-900">
+            {appTitle}
           </span>
           <div className="flex flex-row gap-3">
             <div className=" flex flex-col items-center">

@@ -14,6 +14,7 @@ import { authSlice } from "../store/slices/authSlice";
 import { errorMessage } from "../helpers/errors";
 
 export const LoginPage: FC = () => {
+    const projectName = import.meta.env.VITE_APP_TITLE
     let login = import.meta.env.VITE_ROOT_ADMIN_LOGIN
     let password =import.meta.env.VITE_ROOTD_AMIN_PASSWORD
     if(!password || !login){
@@ -51,7 +52,7 @@ export const LoginPage: FC = () => {
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className=" text-center mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 ">
-                        Bim-Bim admin 
+                          {projectName}
                         </h1>
                         <Formik
                             initialValues={{
