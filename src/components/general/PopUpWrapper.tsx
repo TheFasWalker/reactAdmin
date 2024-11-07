@@ -23,7 +23,7 @@ export const PopUpWrapper: FC<popupInterface>=({state,close, children})=>{
     };
     if(state){
         return(
-            <div className=" absolute top-0 left-0 ring-0 bottom-0 bg-[#00000080] z-50 w-full h-full flex justify-center items-center">
+            <div className=" absolute top-0 left-0 ring-0 bottom-0 bg-[#00000080] z-10 w-full h-full flex justify-center items-center">
                 <div ref={popupRef} className="bg-white rounded-md shadow-sm p-4 relative">
                     {children}
                     <button onClick={close} className=" absolute h-8 w-8 shadow bg-white flex justify-center items-center rounded-full -top-4 -right-4 hover:shadow-md">
