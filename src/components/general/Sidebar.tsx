@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom"
 import { SidebarLink } from "../ui/buttons/links/SlidebarLinks"
 import { Routes } from "../../navigation/routes"
 import { useAppSelector } from "../../hooks/redux"
+import { AccessGroup } from "../../models/userRoles"
 
 
 export const Sidebar = () => {
@@ -25,7 +26,7 @@ export const Sidebar = () => {
             <SidebarLink
               title="посты" link={Routes.posts} icon={"pages"}            />
           </li>
-          {role == 'RootAdmin' && 
+          {role == AccessGroup.admin && 
             <li>
               <SidebarLink
                 title="Пользователи" link={Routes.users} icon={"users"}            />
@@ -46,7 +47,7 @@ export const Sidebar = () => {
               link={Routes.docs} 
               icon='pages'/>
           </li>
-          { role == 'RootAdmin' && (
+          { role == AccessGroup.admin && (
           <>
             <li>
               <SidebarLink
