@@ -3,16 +3,19 @@ import { InputField } from "../ui/form/InputField";
 import { DropDownSelector } from "../ui/form/DropDownSelector";
 import { ButtonType1 } from "../ui/buttons/SybmitButton";
 import { PopUpWrapper } from "../general/PopUpWrapper";
-import { UserRolesData } from "../../staticData/roles";
 import { PasswordInput } from "../ui/form/PasswordInput";
 import { Form, Formik } from "formik";
 import { userCreatingValidation } from "../../heplers/validation";
 import { sha512 } from "js-sha512";
+import { useAppDispatch } from "../../hooks/redux";
+import { createUser } from "../../store/actions/userAcrion";
+import { UserRolesData } from "../../models/userRoles";
 interface UserCreatePopupInterface {
     popupState:boolean,
     closePopup:()=>void
 }
 export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePopup})=>{
+    const dispatch = useAppDispatch()
     return(
         <PopUpWrapper 
         state={popupState} 
@@ -29,7 +32,9 @@ export const UserCreatePopup:FC<UserCreatePopupInterface> =({popupState,closePop
                     login:''
                 }}
                 validateOnBlur
-                onSubmit={(values)=>{            
+                onSubmit={(values)=>{     
+                    dispatch(createUser(values))
+                    closePopup()
                     values.password = sha512(values.password)
                     console.log(values)
                 }}

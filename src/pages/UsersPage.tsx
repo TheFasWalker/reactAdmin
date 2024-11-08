@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { UserPreview } from "../components/users/UserPreview";
 import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { UserCreatePopup } from "../components/users/UserCreatePopup";
+import { useAppSelector } from "../hooks/redux";
+import { SucsessCreatingUser } from "../components/users/SucsessCreatingUser";
 
 
 const users = [
@@ -79,8 +81,11 @@ const users = [
 
 export const UsersPage: FC = () => {
     const [creatingUserPopupState, setCreatingUserPopupState] = useState(false)
+    const{showCreadedUserData}=useAppSelector((state)=>state.userReduser)
     return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+            <SucsessCreatingUser 
+                visibility={showCreadedUserData} />
             <UserCreatePopup
                 popupState={creatingUserPopupState}
                 closePopup={() => setCreatingUserPopupState(false)} />

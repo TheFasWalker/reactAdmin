@@ -1,17 +1,17 @@
 import { FC } from "react";
 import { ButtonType1 } from "../ui/buttons/SybmitButton";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { userSlice } from "../../store/slices/userSlice";
+import { UserRole } from "../ui/UserRole";
 
 interface SucsessCreatingUserInterface{
-    visibility:boolean,
-    name:string,
-    family:string,
-    email:string,
-    password:string,
-    login:string,
-    close:()=>void
+    visibility:boolean
 }
 
-export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({login,visibility,name,family,email,password,close})=>{
+export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({visibility})=>{
+    const dispatch = useAppDispatch()
+    const{email,family,login,name,password,role}=useAppSelector((state)=>state.userReduser)
+
     if(visibility){
         return(
             <div className="fixed top-0 bottom-0 right-0 left-0 z-50 bg-[#00000080] flex items-center justify-center">
@@ -24,8 +24,9 @@ export const SucsessCreatingUser:FC<SucsessCreatingUserInterface>=({login,visibi
                             <span>Фамилия : {family}</span>
                             <span>Email : {email}</span>
                             <span>Пароль: <b>{password}</b></span>
+                            <span>роль : { <UserRole role={role} />}</span>
                             <ButtonType1
-                                onClick={close}
+                                onClick={()=>dispatch(userSlice.actions.userClean())}
                                 name="Закрыть окно"
                             />
                     </div>
