@@ -28,3 +28,12 @@ export const autorisation = (login:string,password:string)=> async (dispatch:App
         console.log(e.message)
     }
 }
+
+export const getUserData =(id:string)=>(dispatch:AppDispatch)=>{
+    const data ={
+        email:'email@email.email123123',
+        role:'RootAdmin',
+        id
+    }
+    dispatch(authSlice.actions.authGetUserData(data))
+}

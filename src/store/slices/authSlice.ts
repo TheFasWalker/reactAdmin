@@ -6,7 +6,8 @@ interface authInterface{
     isLoading:boolean,
     error:string,
     email:string,
-    role:userRole['role']
+    role:userRole['role'] |''
+    id:string
 }
 interface authSuccessInterface{
     token:string
@@ -16,8 +17,9 @@ const initialState:authInterface ={
     token:'',
     isLoading:false,
     error:'',
-    email:'admin@admin.admins',
-    role:'RootAdmin',
+    email:'',
+    role:'',
+    id:'123s-sdf1'
 }
 
 
@@ -31,7 +33,6 @@ export const authSlice = createSlice({
         authSuccess(state,action:PayloadAction<authSuccessInterface>){
             state.token=action.payload.token
             state.error= ''
-            state.isLoading=false
         },
         authError(state,action:PayloadAction<string>){
             state.isLoading=false
@@ -44,6 +45,16 @@ export const authSlice = createSlice({
         },        
         authCleanError(state){
             state.error = ''
+        },
+        authGetUserData(state,actions){
+            state.email=actions.payload.email
+            state.role=actions.payload.role
+            state.id=actions.payload.id
+            state.isLoading=false
+        },
+        authData(state,action){
+            state.email=action.payload.email
+            state.role = action.payload.role
         }
 
 

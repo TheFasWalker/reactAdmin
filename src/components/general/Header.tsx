@@ -9,7 +9,7 @@ export const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const appTitle = import.meta.env.VITE_APP_TITLE
-  const {role,email}=useAppSelector((state)=>state.authReduser)
+  const {role,email,id}=useAppSelector((state)=>state.authReduser)
   const exit =()=>{
     dispatch(authSlice.actions.authLogOut())
     navigate(Routes.login)
@@ -26,7 +26,7 @@ export const Header = () => {
           </span>
           <div className="flex flex-row gap-3">
             <div className=" flex flex-col items-center">
-
+              {id}
               <span>{email}</span>
               <UserRole role={role} />
             </div>
