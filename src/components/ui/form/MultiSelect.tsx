@@ -39,7 +39,7 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data,title,name }) => {
             setdropDownMenuState(false);
         }
     }
-    const deleteShownElement = (value: string, e: MouseEvent) => {
+    const deleteShownElement = (value: string, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation()
             setSelectedItems((prev) => prev.filter(item => item.value !== value))
 

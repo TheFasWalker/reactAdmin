@@ -34,7 +34,16 @@ export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDow
         setButtonTitle(title)
         setDropDownState(false)
         setSelectedValue(value)
-        onchange && onchange({ target: { name: name, value: value } })
+        if (onchange) {
+            const event = {
+                target: {
+                    name,
+                    value,
+                },
+            } as React.ChangeEvent<HTMLInputElement>;
+            onchange(event)
+        }
+         
     }
     const missKlick =(e:MouseEvent)=>{
         if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {

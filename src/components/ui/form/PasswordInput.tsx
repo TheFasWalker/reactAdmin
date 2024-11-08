@@ -15,7 +15,15 @@ export const PasswordInput: FC<PasswordInputInterface> = ({name,touched,error,va
 
     const generatePassword=()=>{
         let generatedPassword = passwordGenerator()
-        onchange && onchange({ target: { name: name, value: generatedPassword } });
+              if (onchange) {
+                const event = {
+                    target: {
+                        name,
+                        value: generatedPassword,
+                    },
+                } as React.ChangeEvent<HTMLInputElement>;
+                onchange(event);
+              }
     }
 
 
