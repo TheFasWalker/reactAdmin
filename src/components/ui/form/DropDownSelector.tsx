@@ -2,13 +2,13 @@ import { FC, useEffect, useRef, useState } from "react";
 
 type data={
     title:string,
-    value:string
+    role:string
 
 }
 interface DropDownSelectorInterface {
     title?: string,
     name: string
-    data:Array<data>
+    data:data[]
     onchange?:(e: React.ChangeEvent<HTMLInputElement>)=>void,
     onblure?:(e: React.FocusEvent<HTMLInputElement>)=>void,
     touched?:boolean,
@@ -72,11 +72,11 @@ export const DropDownSelector: FC<DropDownSelectorInterface> = ({ title='DropDow
                 <div className=" absolute top-[90%] left-0 bg-white w-full flex flex-col border-gray-300 border-b border-r border-l rounded-br-lg rounded-bl-lg max-h-52 overflow-y-scroll">
                     {data.map(item=>(
                             <Button
-                            key={item.value}
+                            key={item.role}
                             title={item.title}
-                            activity = {item.value == selectedValue}
-                            value={item.value}                           
-                            onclick={()=>clickOnElem(item.value, item.title)}
+                            activity = {item.role == selectedValue}
+                            value={item.role}                           
+                            onclick={()=>clickOnElem(item.role, item.title)}
                         />
                     ))}
 

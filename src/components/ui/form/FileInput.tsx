@@ -41,7 +41,7 @@ const addingImage =(e: React.ChangeEvent<HTMLInputElement>)=>{
 }
 const deleteInputFile=()=>{
     console.log(inputRef.current)
-    inputRef.current.value='';
+    // inputRef.current.value='';
     setFileName("");
     setFileSize("");
     setPhotoUrl(null);

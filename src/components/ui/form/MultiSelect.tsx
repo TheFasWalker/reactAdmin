@@ -53,12 +53,23 @@ export const MultiSelect: FC<MultiSelectInterface> = ({ data,title,name }) => {
 
 
     return (
-        <div ref={dropDownRef}   className=" relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-<input type="text" value={JSON.stringify(selectedItems)} readOnly hidden />
-           <div className=""  onClick={()=>setdropDownMenuState(!dropDownMenuState)}> {selectedItems.length === 0
+        <div ref={dropDownRef}   
+            className=" relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            <input 
+                type="text" 
+                value={JSON.stringify(selectedItems)} 
+                readOnly 
+                hidden 
+            />
+            <div 
+                className=""  
+                onClick={()=>setdropDownMenuState(!dropDownMenuState)}
+            > 
+            {selectedItems.length === 0
                 ?
                 (<span className="flex w-full h-full items-center justify-center">{ title}</span>)
-                : (<div className="flex flex-row gap-0.5 flex-wrap">
+                : 
+                (<div className="flex flex-row gap-0.5 flex-wrap">
                     {selectedItems.map((item) => (
 
                         <ShownElem

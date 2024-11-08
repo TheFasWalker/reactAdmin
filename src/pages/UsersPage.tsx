@@ -4,9 +4,16 @@ import { ButtonType1 } from "../components/ui/buttons/SybmitButton";
 import { UserCreatePopup } from "../components/users/UserCreatePopup";
 import { useAppSelector } from "../hooks/redux";
 import { SucsessCreatingUser } from "../components/users/SucsessCreatingUser";
+import { userRole } from "../models/userRoles";
 
-
-const users = [
+interface Iuser{
+    email: string,
+    userRole: userRole['role'],
+    activity: boolean,
+    name: string,
+    family:string 
+}
+const users:Iuser[] = [
     {
         email: "user1@example.com",
         userRole: "RootAdmin",

@@ -50,8 +50,6 @@ export const ShowPost: FC = () => {
                             ref={swiperRef}
                             spaceBetween={10}
                             slidesPerView={1}
-                            onSlideChange={() => console.log('slide change')}
-                            onSwiper={(swiper) => console.log(swiper)}
                             pagination={{ clickable: true }}>
                             {postData.images.map((image,index) => (
                                 <SwiperSlide key={index}>

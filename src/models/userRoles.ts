@@ -1,5 +1,5 @@
 export interface userRole{
-    role:'Content manager' | 'RootAdmin' | 'partner'
+    role:'Content manager' | 'RootAdmin' | 'partner' | ''
 }
 
 const adminValue:string = 'RootAdmin'
@@ -12,7 +12,10 @@ const managerTitle:string = 'Контент\u00A0менеджер'
 const partnerValue:string = 'partner'
 const partnerTitle:string= 'Партнёр'
 
-
+interface UserRolesDataInterface {
+    title:string,
+    role:userRole['role']
+}
 
 export const AccessGroup ={
     admin:{
@@ -29,17 +32,17 @@ export const AccessGroup ={
     }
 }
 
-export const UserRolesData =[
+export const UserRolesData: UserRolesDataInterface[] =[
     {
         title:adminTitle,
-        value:adminValue
+        role:adminValue as userRole['role']
     },
     {
         title:managerTitle,
-        value:managerValue
+        role:managerValue as userRole['role']
     },
     {
         title:partnerTitle,
-        value:partnerValue
+        role:partnerValue as userRole['role']
     }
 ]

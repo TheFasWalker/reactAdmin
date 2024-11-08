@@ -21,8 +21,11 @@ import { Toggler } from "../components/ui/form/Toggler";
 import { Pagination } from "../components/general/Pagination";
 import { UserRolesData } from "../models/userRoles";
 
-
-const dataForDropDown=[
+interface dataForDropDownInterface{
+    title:string,
+    value:string
+}
+const dataForDropDown:dataForDropDownInterface[]=[
     {
         title:'title1',
         value:'value1'
@@ -320,18 +323,14 @@ export const UiPage: FC = () => {
                 </div>
                 <div className="w-72">
                     {
-                        UserRolesData.map(elem=>(
+                        UserRolesData.map((elem,index)=>(
                             <UserRole
-                                role={elem.value}
+                            key={index}
+                                role={elem.role}
                             />
                         ))
                     }
-                {/* <UserRole
-                role="admin"/>
-                <UserRole
-                role="manager"/>
-                <UserRole
-                role="partner"/> */}
+
                 <div className="flex flex-row gap-2">
                         <span className="font-bold">имя компонента:</span>
                         <span className="font-bold text-green-900">UserRole</span>
@@ -356,7 +355,6 @@ export const UiPage: FC = () => {
 
                             <div className="w-72">
                                 <InputField
-                                    validateFunc={()=>console.log()}
                                     error={errors.email}
                                     touched={touched.email}
                                     type="email"
@@ -442,7 +440,7 @@ export const UiPage: FC = () => {
                                 <DropDownSelector
                                 title="Кнопка дропа"
                                 name="name"
-                                data={dataForDropDown}/>
+                                data={UserRolesData}/>
                             <div className="flex flex-row gap-2">
                                 <span className="font-bold">имя компонента:</span>
                                 <span className="font-bold text-green-900">DropDownSelector</span>

@@ -6,7 +6,7 @@ interface userInterface{
     family:string,
     email:string,
     password:string,
-    role:userRole | '',
+    role:userRole['role'] | '',
     login:string
     id:string
     isLoading:boolean
