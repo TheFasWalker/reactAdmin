@@ -19,6 +19,7 @@ import { DropDownSelector } from "../components/ui/form/DropDownSelector";
 import { MultiSelect } from "../components/ui/form/MultiSelect";
 import { Toggler } from "../components/ui/form/Toggler";
 import { Pagination } from "../components/general/Pagination";
+import { UserRolesData } from "../models/userRoles";
 
 
 const dataForDropDown=[
@@ -318,12 +319,19 @@ export const UiPage: FC = () => {
                     </div>
                 </div>
                 <div className="w-72">
-<UserRole
-role="admin"/>
-<UserRole
-role="manager"/>
-<UserRole
-role="partner"/>
+                    {
+                        UserRolesData.map(elem=>(
+                            <UserRole
+                                role={elem.value}
+                            />
+                        ))
+                    }
+                {/* <UserRole
+                role="admin"/>
+                <UserRole
+                role="manager"/>
+                <UserRole
+                role="partner"/> */}
                 <div className="flex flex-row gap-2">
                         <span className="font-bold">имя компонента:</span>
                         <span className="font-bold text-green-900">UserRole</span>
@@ -348,9 +356,7 @@ role="partner"/>
 
                             <div className="w-72">
                                 <InputField
-                                    validateFunc={function (): void {
-                                        throw new Error("Function not implemented.");
-                                    }}
+                                    validateFunc={()=>console.log()}
                                     error={errors.email}
                                     touched={touched.email}
                                     type="email"

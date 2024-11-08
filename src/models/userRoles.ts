@@ -2,39 +2,44 @@ export interface userRole{
     role:'Content manager' | 'RootAdmin' | 'partner'
 }
 
-const adminValue:string =  'RootAdmin'
-const managerValue:string =  'Content manager'
-const partnerValue:string =  'partner'
+const adminValue:string = 'RootAdmin'
+const adminTitle:string = 'Администратор'
 
+const managerValue:string = 'Content manager'
+const managerTitle:string = 'Контент\u00A0менеджер'
+
+
+const partnerValue:string = 'partner'
+const partnerTitle:string= 'Партнёр'
 
 
 
 export const AccessGroup ={
     admin:{
-        title:'Администратор',
+        title:adminTitle,
         value:adminValue
     },
     manager:{
-        title:'Контент менеджер',
+        title:managerTitle,
         value:managerValue
     },
     partner:{
-        title:'Партнёр',
+        title:partnerTitle,
         value:partnerValue
     }
 }
 
 export const UserRolesData =[
     {
-        title:'Администратор',
+        title:adminTitle,
         value:adminValue
     },
     {
-        title:'Контент менеджер',
+        title:managerTitle,
         value:managerValue
     },
     {
-        title:'Партнёр',
+        title:partnerTitle,
         value:partnerValue
     }
 ]
