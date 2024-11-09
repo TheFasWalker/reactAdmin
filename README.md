@@ -1,3 +1,36 @@
+# Настрйока Проекта и запуск
+сделать из файла .env.example файл .env <br>
+**Обязательные поля :**
+<ul>
+    <li>`VITE_EDITOR_API_KEY` - ключ для использования плагина https://www.tiny.cloud/</li>
+    <li>`VITE_API_DB_URL` -URL с портом - куда будет стучаться для получения обсновных данных</li>
+    <li>`VITE_API_PHOTOS_URL`</li>
+    <li>`VITE_APP_TITLE`  - title страницы +  заголовки на странице логина и на обзей странице на месте логотипа</li>
+</ul>
+
+**необязательные поля (Для разработки)**
+<ul>
+    <li>`VITE_ROOT_ADMIN_LOGIN` -  данные для входа.( будут автоматически прописаны  на странице авторизации)</li>
+    <li>`VITE_ROOTD_AMIN_PASSWORD` -  данные для входа.( будут автоматически прописаны  на странице авторизации)</li>
+</ul>
+
+`npm install` Установка пакетов<br>
+`npm run dev` локальная разработка
+
+## Сборка 
+`npm run build` сборка происходит в папку disr ( находится в гитигноре)
+
+
+
+
+
+
+
+
+
+
+
+----
 ## Что есть в данной сборке :
 
 - [React](https://reactjs.org/)
@@ -9,13 +42,6 @@
 - [Vite](https://vitejs.dev/) to build the project for development or production
 - [Husky 🐶](https://typicode.github.io/husky/) runs the full list of specs before committing your changes to ensure that you have a green build
 
-## Разработка
-
-### Setup
-
-1. Run `npm install` to install all of the project's dependencies
-2. Build the project for production: `npm run build`
-3. Run the local development server: `npm run dev`
 
 ### Tailwind + CSS Modules
 
@@ -39,6 +65,10 @@
 - `build` - build the project files for distribution
 - `dev` - run the local development server
 
-
+<br>
+<br>
+<br>
+<br>
+---
 
 Сборка взята <a href="https://github.com/nrabhiram/vite-react-ts-tailwind-template.git">тут</a>
