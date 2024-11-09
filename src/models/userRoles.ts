@@ -2,14 +2,14 @@ export interface userRole{
     role:'Content manager' | 'RootAdmin' | 'partner' | ''
 }
 
-const adminValue:string = 'RootAdmin'
+const adminValue:string = import.meta.env.VITE_ADMIN_ROLE_CODE
 const adminTitle:string = 'Администратор'
 
-const managerValue:string = 'Content manager'
+const managerValue:string = import.meta.env.VITE_MANAGER_ROLE_CODE
 const managerTitle:string = 'Контент\u00A0менеджер'
 
 
-const partnerValue:string = 'partner'
+const partnerValue:string = import.meta.env.VITE_PARTNER_ROLE_CODE
 const partnerTitle:string= 'Партнёр'
 
 interface UserRolesDataInterface {
