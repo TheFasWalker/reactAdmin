@@ -10,7 +10,8 @@ interface authInterface{
     id:string
 }
 interface authSuccessInterface{
-    token:string
+    token:string,
+    id:string
 }
 
 const initialState:authInterface ={
@@ -19,7 +20,7 @@ const initialState:authInterface ={
     error:'',
     email:'',
     role:'',
-    id:'123s-sdf1'
+    id:''
 }
 
 
@@ -32,7 +33,8 @@ export const authSlice = createSlice({
         },
         authSuccess(state,action:PayloadAction<authSuccessInterface>){
             state.token=action.payload.token
-            state.error= ''
+            state.error= '',
+            state.id=action.payload.id
         },
         authError(state,action:PayloadAction<string>){
             state.isLoading=false

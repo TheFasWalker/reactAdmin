@@ -35,6 +35,9 @@ export const LoginPage: FC = () => {
         await dispatch(autorisation(login, password))
         // navigate(Routes.home)
         console.log(token)
+        if(token){
+            navigate(Routes.home)
+        }
     }
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
