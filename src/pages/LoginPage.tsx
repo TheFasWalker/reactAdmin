@@ -32,12 +32,11 @@ export const LoginPage: FC = () => {
     const navigate = useNavigate()
 
     const logger = async  (login:string,password:string)=>{
-        await dispatch(autorisation(login, password))
-        // navigate(Routes.home)
-        console.log(token)
-        if(token){
+        if(await dispatch(autorisation(login, password))){
             navigate(Routes.home)
         }
+        // navigate(Routes.home)
+        console.log(token)
     }
     return (
         <section className="bg-gray-50 dark:bg-gray-900">

@@ -4,19 +4,12 @@ import { authSlice } from "../../store/slices/authSlice"
 import { WhiteButton } from "../ui/buttons/WhiteButton"
 import { UserRole } from "../ui/UserRole"
 import { Routes } from "../../navigation/routes"
-import { FC } from "react"
-import { userRole } from "../../models/userRoles"
 
-interface HeaderInterface{
-  email:string,
-  id:string,
-  role:userRole['role']
-}
-
-export const Header:FC<HeaderInterface> = ({email,id,role}) => {
+export const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const appTitle = import.meta.env.VITE_APP_TITLE
+  const {role,email,id}=useAppSelector((state)=>state.authReduser)
   const exit =()=>{
     dispatch(authSlice.actions.authLogOut())
     navigate(Routes.login)

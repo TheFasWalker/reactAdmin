@@ -2,8 +2,6 @@ import { redirect } from "react-router-dom";
 import { fetchData } from "../../functions/fetchData";
 import { authSlice } from "../slices/authSlice";
 import { AppDispatch } from "../store";
-import { Routes } from "../../navigation/routes";
-import { Redirect } from "react-router-dom";
 
 export const autorisation = (login:string,password:string)=> async (dispatch:AppDispatch)=>{
     // try{
@@ -38,8 +36,10 @@ export const autorisation = (login:string,password:string)=> async (dispatch:App
         id:'asdfasdf',
         token:'asdfaaasdfaa'
     }
+
     sessionStorage.setItem('token',authData.token)
     dispatch(authSlice.actions.authSuccess(authData))
+    return true
 }
 
 export const getUserData =(id:string)=>(dispatch:AppDispatch)=>{
