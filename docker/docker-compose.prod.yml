@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "3001:80"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./vite.config.ts:/app/vite.config.ts
+      - ./package-lock.json:/app/package-lock.json
+    environment:
+      - VITE_MODE=production
+      - VITE_PRODUCTION=true
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "3001:80"
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./dist:/usr/share/nginx/html
+    entrypoint: ["nginx", "-g", "daemon off;"]
+
